@@ -1,0 +1,545 @@
+<title>Маленький театрик кукол</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Yeseva+One&family=Manrope:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  /* краски наличника */
+  --teal:#2c6b5f;      --teal-d:#1f4f46;
+  --gold:#e0a32e;      --gold-d:#b87f1c;
+  --verm:#bc3b28;      --verm-d:#8f2a1c;
+  --cobalt:#2f5f8c;
+  --lace:#f6f0e0;
+  --roof:#a8352a;      --roof-d:#7d241c;
+  --wood:#8a6a44;
+  --ink:#2b2018;
+  --ink-2:#6b5a49;
+  --cream:#f7f1e3;
+  --cream-2:#ece2cc;
+  --sky-1:#bcd9e8; --sky-2:#e8dcc0;
+  --disp:"Yeseva One",Georgia,serif;
+  --sans:"Manrope",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#16212b;color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;overflow-x:hidden}
+h1,h2,h3{margin:0;font-family:var(--disp);font-weight:400;text-wrap:balance;line-height:1.08}
+p{margin:0}
+a{color:inherit}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
+/* ═══ СЦЕНА: неподвижная камера, внутри едет мир ═══ */
+.stage{position:fixed;inset:0;overflow:hidden;z-index:0;background:linear-gradient(#bcd9e8,#d6e4e0)}
+.sky{position:absolute;inset:-6% -8%;}
+.sky-day{position:absolute;inset:0;background:linear-gradient(#a9cfe4 0%,#c7dde6 45%,#e2e6d4 100%)}
+.sky-eve{position:absolute;inset:0;opacity:0;background:linear-gradient(#2c3f63 0%,#7d5f72 42%,#d9975c 78%,#e8b878 100%)}
+.clouds{position:absolute;inset:0;pointer-events:none}
+.cl{position:absolute;background:#fff;border-radius:50%;filter:blur(.3px);opacity:.92}
+.cl::before,.cl::after{content:"";position:absolute;background:#fff;border-radius:50%}
+
+.world-pos{position:absolute;top:0;left:50%;width:1080px;margin-left:-540px}
+.world{position:relative;width:1080px;transform-origin:50% 0;will-change:transform}
+
+/* ── воздух над коньком: первый экран смотрит в небо ── */
+.sky-pad{height:500px}
+/* ── крыша ── */
+.roof{position:relative;height:330px}
+.roof-slope{position:absolute;inset:0;
+  background:
+    repeating-linear-gradient(90deg,rgba(0,0,0,.10) 0 1px,transparent 1px 34px),
+    repeating-linear-gradient(180deg,var(--roof) 0 26px,var(--roof-d) 26px 28px);
+  clip-path:polygon(50% 0,100% 100%,0 100%);
+  box-shadow:inset 0 -14px 26px rgba(0,0,0,.28)}
+.ridge{position:absolute;left:50%;top:-58px;width:2px;height:64px;background:var(--wood);margin-left:-1px}
+.vane{position:absolute;left:50%;top:-104px;width:76px;height:56px;margin-left:-20px;transform-origin:22% 60%}
+.prichelina{position:absolute;left:0;right:0;bottom:-2px;height:54px;
+  background:repeating-linear-gradient(90deg,transparent 0 6px,var(--lace) 6px 10px,transparent 10px 16px);
+  -webkit-mask:radial-gradient(circle at 8px 0,transparent 7px,#000 8px) 0 0/16px 16px repeat-x,linear-gradient(#000,#000) 0 14px/100% 40px no-repeat;
+  mask:radial-gradient(circle at 8px 0,transparent 7px,#000 8px) 0 0/16px 16px repeat-x,linear-gradient(#000,#000) 0 14px/100% 40px no-repeat;
+  clip-path:polygon(50% -120%,100% 100%,0 100%)}
+.eaves{position:absolute;left:-26px;right:-26px;bottom:-14px;height:22px;background:var(--lace);
+  -webkit-mask:radial-gradient(circle at 11px 22px,#000 10px,transparent 11px) 0 0/22px 22px repeat-x;
+  mask:radial-gradient(circle at 11px 22px,#000 10px,transparent 11px) 0 0/22px 22px repeat-x}
+
+/* ── общая стена: доски ── */
+.tier{position:relative;border-left:14px solid rgba(0,0,0,.14);border-right:14px solid rgba(0,0,0,.14)}
+.tier.t-attic{height:300px;background:
+  repeating-linear-gradient(180deg,rgba(0,0,0,.07) 0 1px,transparent 1px 4px),
+  repeating-linear-gradient(180deg,#3b7d6e 0 30px,#2c6b5f 30px 60px)}
+.tier.t-win{height:520px;background:
+  repeating-linear-gradient(180deg,rgba(0,0,0,.07) 0 1px,transparent 1px 4px),
+  repeating-linear-gradient(180deg,var(--cobalt) 0 32px,#28527a 32px 64px)}
+.tier.t-board{height:520px;background:
+  repeating-linear-gradient(180deg,rgba(0,0,0,.07) 0 1px,transparent 1px 4px),
+  repeating-linear-gradient(180deg,#c9762f 0 30px,#b3652a 30px 60px)}
+.tier.t-porch{height:560px;background:
+  repeating-linear-gradient(180deg,rgba(0,0,0,.07) 0 1px,transparent 1px 4px),
+  repeating-linear-gradient(180deg,#7d4f6b 0 30px,#6b4159 30px 60px)}
+/* лёгкая ветхость: облупившаяся краска */
+.tier::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background:
+    radial-gradient(38px 12px at 18% 30%,rgba(120,90,60,.5),transparent 70%),
+    radial-gradient(54px 9px at 76% 62%,rgba(120,90,60,.42),transparent 70%),
+    radial-gradient(24px 14px at 44% 84%,rgba(120,90,60,.4),transparent 70%)}
+
+/* ── резной пояс между ярусами ── */
+.belt{position:relative;height:46px;background:var(--gold);
+  border-top:4px solid var(--verm);border-bottom:4px solid var(--verm);
+  box-shadow:0 6px 12px rgba(0,0,0,.22)}
+.belt::before{content:"";position:absolute;inset:6px 0;
+  background:repeating-linear-gradient(90deg,var(--teal) 0 14px,transparent 14px 28px);
+  -webkit-mask:radial-gradient(circle at 14px 50%,#000 8px,transparent 9px) 0 0/28px 100% repeat-x;
+  mask:radial-gradient(circle at 14px 50%,#000 8px,transparent 9px) 0 0/28px 100% repeat-x}
+.belt::after{content:"";position:absolute;left:0;right:0;bottom:-18px;height:18px;
+  background:var(--lace);
+  -webkit-mask:radial-gradient(circle at 13px 0,transparent 12px,#000 13px) 0 0/26px 18px repeat-x;
+  mask:radial-gradient(circle at 13px 0,transparent 12px,#000 13px) 0 0/26px 18px repeat-x}
+
+/* ── крыльцо ── */
+.porch{position:absolute;left:50%;bottom:0;width:420px;margin-left:-210px}
+.porch-roof{height:78px;background:repeating-linear-gradient(180deg,var(--roof) 0 20px,var(--roof-d) 20px 22px);
+  clip-path:polygon(50% 0,100% 100%,0 100%)}
+.porch-door{height:230px;margin:0 96px;background:linear-gradient(var(--verm),var(--verm-d));
+  border:7px solid var(--gold);border-bottom:none;border-radius:110px 110px 0 0;
+  box-shadow:inset 0 0 30px rgba(0,0,0,.35)}
+.steps{height:80px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
+.steps i{display:block;height:15px;background:var(--wood);border-top:2px solid rgba(255,255,255,.2);border-radius:2px}
+.ground{height:220px;background:linear-gradient(#4e6b35,#35491f)}
+.grass{position:absolute;left:-200px;right:-200px;bottom:180px;height:44px;
+  background:repeating-linear-gradient(86deg,#5c7a3c 0 3px,transparent 3px 9px);
+  -webkit-mask:radial-gradient(circle at 6px 44px,#000 10px,transparent 11px) 0 0/12px 44px repeat-x;
+  mask:radial-gradient(circle at 6px 44px,#000 10px,transparent 11px) 0 0/12px 44px repeat-x}
+
+/* ═══ КОНТЕНТ ═══ */
+.flow{position:relative;z-index:10}
+.stop{min-height:100svh;display:flex;align-items:center;padding:96px 20px}
+.stop.right{justify-content:flex-end}
+.stop.left{justify-content:flex-start}
+.stop.mid{justify-content:center}
+.panel{width:100%;max-width:470px}
+
+/* плашка — резной щит */
+.board{background:var(--cream);border:3px solid var(--gold);border-radius:4px;padding:26px 28px;
+  box-shadow:0 18px 40px rgba(20,14,8,.34),inset 0 0 0 3px var(--cream)}
+.board.dark{background:#22303c;border-color:var(--cobalt);color:#f2ece0;box-shadow:0 18px 40px rgba(0,0,0,.5),inset 0 0 0 3px #22303c}
+.board.dark .lbl{color:#9fc2d8}
+.board.dark .txt{color:#cfd9dd}
+.lbl{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--verm);margin-bottom:10px}
+.board h2{font-size:clamp(26px,4.4vw,38px);margin-bottom:12px}
+.txt{font-size:15.5px;color:var(--ink-2);max-width:56ch}
+.txt + .txt{margin-top:10px}
+
+.btn{display:inline-block;font-family:var(--sans);font-weight:700;font-size:14px;letter-spacing:.02em;
+  padding:11px 22px;border-radius:2px;border:2px solid var(--ink);background:transparent;color:var(--ink);
+  text-decoration:none;cursor:pointer;transition:background .18s,color .18s,transform .18s}
+.btn:hover{background:var(--ink);color:var(--cream);transform:translateY(-2px)}
+.btn.fill{background:var(--verm);border-color:var(--verm);color:#fff}
+.btn.fill:hover{background:var(--verm-d);border-color:var(--verm-d);color:#fff}
+.btns{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+
+/* ── шапка ── */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:60;background:rgba(34,22,18,.94);color:#f4ecdc;
+  padding:9px 18px;padding-top:calc(9px + env(safe-area-inset-top,0px));
+  display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap;
+  border-bottom:3px solid var(--gold);backdrop-filter:blur(8px)}
+.topbar .next{font-size:14px;display:flex;gap:9px;align-items:baseline;flex-wrap:wrap}
+.topbar .k{font-size:10px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--gold)}
+.topbar b{font-family:var(--disp);font-weight:400;font-size:17px}
+.topbar .when{color:#c9bda8}
+.topbar .btn{border-color:var(--gold);color:var(--gold);padding:7px 16px;font-size:13px}
+.topbar .btn:hover{background:var(--gold);color:#22160f}
+
+/* ── герой ── */
+.hero{text-align:center;color:#20303c}
+.hero .mark{width:112px;height:112px;margin:0 auto 20px;border-radius:50%;background:var(--gold);
+  border:4px solid var(--lace);display:grid;place-items:center;
+  box-shadow:0 10px 30px rgba(20,14,8,.3)}
+.hero h1{font-size:clamp(38px,8.5vw,76px);letter-spacing:-.015em;color:#1d2b36;
+  text-shadow:0 2px 0 rgba(255,255,255,.55)}
+.hero .tag{font-size:clamp(15px,2.2vw,19px);color:#3c4f5c;margin-top:12px;max-width:34ch;margin-inline:auto}
+.hero .btns{justify-content:center}
+.scroll-hint{margin-top:34px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#4a5f6c}
+.scroll-hint span{display:block;font-size:20px;margin-top:6px;animation:bob 2.2s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+
+/* ── числа ── */
+.nums{display:flex;gap:26px;margin-top:20px;flex-wrap:wrap}
+.nums div{flex:1 1 90px}
+.nums b{display:block;font-family:var(--disp);font-size:36px;color:var(--verm);line-height:1}
+.nums span{font-size:12.5px;color:var(--ink-2)}
+
+/* ── окна-актёры ── */
+.wins{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:20px}
+.win{position:relative;aspect-ratio:3/4.4;perspective:520px;background:none;border:0;padding:0;cursor:pointer;font:inherit;color:inherit}
+.win .frame{position:absolute;inset:0;z-index:3;pointer-events:none}
+.win .glass{position:absolute;left:14%;right:14%;top:21%;bottom:13%;overflow:hidden;background:#1b2836;
+  display:grid;place-items:center}
+.win .glass img{width:100%;height:100%;object-fit:cover}
+.win .ph{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#7b93a6;text-align:center;padding:4px}
+.shut{position:absolute;top:0;bottom:0;width:50%;background:linear-gradient(90deg,var(--teal),var(--teal-d));
+  border:2px solid var(--gold);transition:transform .5s cubic-bezier(.22,.85,.3,1);backface-visibility:hidden}
+.shut::after{content:"";position:absolute;inset:16% 22%;border:2px solid rgba(246,240,224,.5);border-radius:3px}
+.shut.l{left:0;transform-origin:left center}
+.shut.r{right:0;transform-origin:right center}
+.win:hover .shut.l,.win:focus-visible .shut.l,.win.open .shut.l{transform:rotateY(-108deg)}
+.win:hover .shut.r,.win:focus-visible .shut.r,.win.open .shut.r{transform:rotateY(108deg)}
+.win .cap{position:absolute;left:0;right:0;bottom:-30px;text-align:center;font-size:11.5px;color:#e8dcc4;
+  opacity:0;transition:opacity .3s;letter-spacing:.04em}
+.win:hover .cap,.win:focus-visible .cap,.win.open .cap{opacity:1}
+@media (max-width:620px){.wins{grid-template-columns:repeat(3,1fr);gap:10px}}
+
+/* ── афиша ── */
+.chips{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:16px}
+.chip{font-size:12px;font-weight:600;padding:5px 12px;border:2px solid var(--gold);border-radius:20px;
+  background:transparent;color:var(--ink);cursor:pointer;font-family:var(--sans);transition:.16s}
+.chip[aria-pressed="true"]{background:var(--verm);border-color:var(--verm);color:#fff}
+.plays{display:grid;gap:10px}
+.play{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:center;
+  padding:12px 14px;background:var(--cream-2);border-left:5px solid var(--gold);text-align:left}
+.play .age{font-family:var(--disp);font-size:19px;color:var(--verm);min-width:34px}
+.play h3{font-family:var(--sans);font-weight:700;font-size:15px;line-height:1.25}
+.play .meta{font-size:12.5px;color:var(--ink-2);margin-top:2px}
+.play .price{font-weight:700;font-size:14px;white-space:nowrap}
+@media (max-width:520px){.play{grid-template-columns:auto 1fr}.play .price{grid-column:2}}
+
+/* ── расписание ── */
+.dates{display:grid;gap:8px;margin-top:6px}
+.date{display:grid;grid-template-columns:62px 1fr;gap:14px;align-items:baseline;
+  padding-bottom:8px;border-bottom:1px dashed rgba(107,90,73,.35)}
+.date .d{font-family:var(--disp);font-size:17px;color:var(--verm)}
+.date .n{font-weight:600;font-size:14.5px}
+.date .t{font-size:12.5px;color:var(--ink-2)}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:16px;margin-top:20px;
+  padding-top:18px;border-top:2px solid var(--gold)}
+.facts .k{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--verm);margin-bottom:3px}
+.facts .v{font-size:13.5px;line-height:1.4}
+.promise{margin-top:18px;padding:14px 16px;background:var(--gold);border-radius:3px;
+  font-family:var(--disp);font-size:17px;color:#2b1c08;line-height:1.25}
+
+/* ── подвал ── */
+.foot{position:relative;z-index:10;background:#1a140f;color:#e6dbc6;padding:64px 20px 48px;
+  padding-bottom:calc(48px + env(safe-area-inset-bottom,0px));border-top:5px solid var(--gold)}
+.foot-in{max-width:960px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:30px}
+.foot h3{font-size:22px;margin-bottom:10px;color:var(--gold)}
+.foot .k{font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.foot p,.foot a{font-size:14px;line-height:1.7;color:#cfc3ab;text-decoration:none}
+.foot a:hover{color:var(--gold)}
+.foot .fine{max-width:960px;margin:34px auto 0;padding-top:18px;border-top:1px solid #34281c;
+  font-size:12px;color:#8a7c68}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .scroll-hint span{animation:none}
+  .cl{display:none}
+  .shut{transition:none}
+}
+</style>
+
+<!-- ═══ библиотека резьбы: рисуется один раз, переиспользуется ═══ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <symbol id="nal" viewBox="0 0 160 220">
+    <path d="M6 62 Q10 20 80 13 Q150 20 154 62 L141 62 Q137 33 80 27 Q23 33 19 62 Z" fill="#f6f0e0"/>
+    <path d="M6 62 q-8-16 5-21 q12-4 13 8 q1 9-9 9" fill="#f6f0e0"/>
+    <path d="M154 62 q8-16-5-21 q-12-4-13 8 q-1 9 9 9" fill="#f6f0e0"/>
+    <path d="M19 62 Q23 33 80 27 Q137 33 141 62 Z" fill="#e0a32e"/>
+    <path d="M31 62 Q35 42 80 37 Q125 42 129 62 Z" fill="#2c6b5f"/>
+    <circle cx="80" cy="47" r="7" fill="#bc3b28"/>
+    <rect x="19" y="62" width="122" height="10" fill="#bc3b28"/>
+    <rect x="19" y="72" width="16" height="118" fill="#e0a32e"/>
+    <rect x="125" y="72" width="16" height="118" fill="#e0a32e"/>
+    <path d="M27 108 l9 14 -9 14 -9-14z" fill="#bc3b28"/>
+    <path d="M133 108 l9 14 -9 14 -9-14z" fill="#bc3b28"/>
+    <rect x="19" y="190" width="122" height="9" fill="#bc3b28"/>
+    <path d="M19 199 h122 v10 q-30 12 -61 12 q-31 0 -61-12z" fill="#f6f0e0"/>
+    <circle cx="40" cy="212" r="6" fill="#2f5f8c"/>
+    <circle cx="120" cy="212" r="6" fill="#2f5f8c"/>
+  </symbol>
+  <symbol id="vane" viewBox="0 0 76 56">
+    <path d="M10 40 q6-24 26-26 q-6-8 2-12 q9-4 12 5 q16 6 16 22 q0 14-16 17 q-22 4-40-6z" fill="#e0a32e" stroke="#8f2a1c" stroke-width="2.5"/>
+    <path d="M60 30 q12 6 14 20 q-14-4-18-12z" fill="#bc3b28"/>
+    <path d="M45 8 q7-6 12 2 q-7 3-12-2z" fill="#bc3b28"/>
+    <circle cx="44" cy="14" r="2.4" fill="#2b2018"/>
+  </symbol>
+  <symbol id="sun" viewBox="0 0 100 100">
+    <circle cx="50" cy="50" r="30" fill="#f6f0e0"/>
+    <path d="M50 8v12M50 80v12M8 50h12M80 50h12M20 20l9 9M71 71l9 9M80 20l-9 9M29 71l-9 9" stroke="#f6f0e0" stroke-width="7" stroke-linecap="round"/>
+    <circle cx="41" cy="46" r="3.4" fill="#e0a32e"/><circle cx="59" cy="46" r="3.4" fill="#e0a32e"/>
+    <path d="M40 58 q10 9 20 0" stroke="#e0a32e" stroke-width="3.4" fill="none" stroke-linecap="round"/>
+  </symbol>
+</svg>
+
+<!-- ═══ ФАСАД ═══ -->
+<div class="stage" aria-hidden="true">
+  <div class="sky" id="sky">
+    <div class="sky-day"></div>
+    <div class="sky-eve" id="skyEve"></div>
+  </div>
+  <div class="clouds" id="clouds"></div>
+
+  <div class="world-pos"><div class="world" id="world">
+    <div class="sky-pad"></div>
+    <div class="roof">
+      <div class="ridge"></div>
+      <svg class="vane" id="vane"><use href="#vane"/></svg>
+      <div class="roof-slope"></div>
+      <div class="prichelina"></div>
+      <div class="eaves"></div>
+    </div>
+    <div class="tier t-attic"></div>
+    <div class="belt"></div>
+    <div class="tier t-win"></div>
+    <div class="belt"></div>
+    <div class="tier t-board"></div>
+    <div class="belt"></div>
+    <div class="tier t-porch">
+      <div class="porch">
+        <div class="porch-roof"></div>
+        <div class="porch-door"></div>
+      </div>
+    </div>
+    <div class="grass"></div>
+    <div class="ground"></div>
+  </div></div>
+</div>
+
+<!-- ═══ ШАПКА ═══ -->
+<header class="topbar">
+  <div class="next">
+    <span class="k">Ближайший</span>
+    <b>«Колобок»</b>
+    <span class="when">2 мая, сб, 10:30 · ДК Плешкова</span>
+  </div>
+  <a class="btn" href="#raspisanie">Билет 800 ₽</a>
+</header>
+
+<main class="flow">
+
+  <!-- 00 — небо и конёк -->
+  <section class="stop mid" id="verh">
+    <div class="panel hero" style="max-width:640px">
+      <div class="mark"><svg width="74" height="74" aria-hidden="true"><use href="#sun"/></svg></div>
+      <h1>Маленький<br>театрик кукол</h1>
+      <p class="tag">Куклы, живая музыка и сказки. Геленджик, для зрителей от года.</p>
+      <div class="btns">
+        <a class="btn fill" href="#afisha">Афиша</a>
+        <a class="btn" href="#raspisanie">Когда прийти</a>
+      </div>
+      <p class="scroll-hint">Спускайтесь<span>↓</span></p>
+    </div>
+  </section>
+
+  <!-- 01 — чердак -->
+  <section class="stop left" id="o-teatre">
+    <div class="panel">
+      <div class="board">
+        <div class="lbl">Чердак · о театре</div>
+        <h2>У нас нет своего здания</h2>
+        <p class="txt">Мы играем в Малом зале Дворца культуры, на детской площадке «Город сказок», в школах и садах. Куклы ездят в чемоданах, ширму собираем за сорок минут до начала.</p>
+        <p class="txt">Этот дом — единственный наш постоянный адрес. Заходите, тут открыто.</p>
+        <div class="nums">
+          <div><b>5</b><span>актёров в труппе</span></div>
+          <div><b>16</b><span>спектаклей в репертуаре</span></div>
+          <div><b>1+</b><span>с какого возраста</span></div>
+        </div>
+        <div class="btns"><a class="btn" href="#">Вся история</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 — окна-актёры -->
+  <section class="stop right" id="aktery">
+    <div class="panel" style="max-width:560px">
+      <div class="board dark">
+        <div class="lbl">Второй ярус · труппа</div>
+        <h2>Пятеро в окнах</h2>
+        <p class="txt">Перчаточные, планшетные, марионетки и ростовые маски — у каждого свои руки и свой голос. Откройте ставни.</p>
+        <div class="wins" id="wins">
+          <button class="win" type="button"><span class="glass"><span class="ph">портрет</span></span><svg class="frame" viewBox="0 0 160 220"><use href="#nal"/></svg><span class="shut l"></span><span class="shut r"></span><span class="cap">Имя · роли</span></button>
+          <button class="win" type="button"><span class="glass"><span class="ph">портрет</span></span><svg class="frame" viewBox="0 0 160 220"><use href="#nal"/></svg><span class="shut l"></span><span class="shut r"></span><span class="cap">Имя · роли</span></button>
+          <button class="win" type="button"><span class="glass"><span class="ph">портрет</span></span><svg class="frame" viewBox="0 0 160 220"><use href="#nal"/></svg><span class="shut l"></span><span class="shut r"></span><span class="cap">Имя · роли</span></button>
+          <button class="win" type="button"><span class="glass"><span class="ph">портрет</span></span><svg class="frame" viewBox="0 0 160 220"><use href="#nal"/></svg><span class="shut l"></span><span class="shut r"></span><span class="cap">Имя · роли</span></button>
+          <button class="win" type="button"><span class="glass"><span class="ph">портрет</span></span><svg class="frame" viewBox="0 0 160 220"><use href="#nal"/></svg><span class="shut l"></span><span class="shut r"></span><span class="cap">Имя · роли</span></button>
+        </div>
+        <div class="btns"><a class="btn" href="#" style="border-color:#e0a32e;color:#e0a32e">Познакомиться</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 — афишная доска -->
+  <section class="stop left" id="afisha">
+    <div class="panel" style="max-width:520px">
+      <div class="board">
+        <div class="lbl">Афишная доска</div>
+        <h2>Что играем</h2>
+        <div class="chips" id="chips" role="group" aria-label="Фильтр по возрасту">
+          <button class="chip" type="button" data-age="all" aria-pressed="true">все 16</button>
+          <button class="chip" type="button" data-age="1" aria-pressed="false">1+</button>
+          <button class="chip" type="button" data-age="2" aria-pressed="false">2+</button>
+          <button class="chip" type="button" data-age="6" aria-pressed="false">6+</button>
+        </div>
+        <div class="plays" id="plays"></div>
+        <div class="btns"><a class="btn" href="#">Весь репертуар</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 — крыльцо -->
+  <section class="stop right" id="raspisanie">
+    <div class="panel" style="max-width:500px">
+      <div class="board">
+        <div class="lbl">Крыльцо · когда прийти</div>
+        <h2>Расписание</h2>
+        <div class="dates">
+          <div class="date"><span class="d">2 мая</span><span><span class="n">Колобок</span><br><span class="t">сб, 10:30 · 1+ · 35 мин</span></span></div>
+          <div class="date"><span class="d">10 мая</span><span><span class="n">Солдатская сказка</span><br><span class="t">вс, 10:30 · 6+ · 40 мин</span></span></div>
+          <div class="date"><span class="d">16 мая</span><span><span class="n">Лягушка-путешественница</span><br><span class="t">сб, 10:30 · 1+ · 35 мин</span></span></div>
+          <div class="date"><span class="d">30 мая</span><span><span class="n">Гуси-лебеди</span><br><span class="t">сб, 10:30 · 2+ · 35 мин</span></span></div>
+        </div>
+        <div class="facts">
+          <div><div class="k">Где</div><div class="v">ДК им. Плешкова,<br>Геленджикский пр-т, 95<br>Малый зал</div></div>
+          <div><div class="k">Сколько</div><div class="v">800 ₽ утренник<br>1000 ₽ вечерний<br>До года — бесплатно</div></div>
+          <div><div class="k">Длится</div><div class="v">35–40 минут<br>без антракта</div></div>
+        </div>
+        <p class="promise">Фото с куклами после спектакля — бесплатно</p>
+        <div class="btns"><a class="btn fill" href="#">Купить билет</a></div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══ ПОДКЛЕТ ═══ -->
+<footer class="foot">
+  <div class="foot-in">
+    <div>
+      <h3>Маленький театрик кукол</h3>
+      <p>Театр Владимира Злобина<br>Геленджик</p>
+    </div>
+    <div>
+      <div class="k">Связаться</div>
+      <p><a href="tel:+79123374197">+7 912 337-41-97</a><br>
+         <a href="tel:+79951903629">+7 995 190-36-29</a><br>
+         Касса ДК: <a href="tel:+78614133240">8 (86141) 3-32-40</a></p>
+    </div>
+    <div>
+      <div class="k">Где мы играем</div>
+      <p>ДК им. Л. Плешкова, Малый зал<br>Площадка «Город сказок»<br>Школы и детские сады</p>
+    </div>
+    <div>
+      <div class="k">Подписаться на афишу</div>
+      <p><a href="#">Telegram</a><br><a href="#">ВКонтакте</a></p>
+    </div>
+  </div>
+  <p class="fine">Прототип главной страницы. Фасад собран из модулей — доски, пояса и наличники меняются на отрисованные без перевёрстки.</p>
+</footer>
+
+<script>
+(function(){
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ── афиша ── */
+  var PLAYS = [
+    {n:'Колобок',                  a:1, m:35, d:'2 мая, 10:30',  p:'800 ₽'},
+    {n:'Лягушка-путешественница',  a:1, m:35, d:'16 мая, 10:30', p:'800 ₽'},
+    {n:'Сказочка про Козявочку',   a:1, m:30, d:'по заявке',     p:'800 ₽'},
+    {n:'Гуси-лебеди',              a:2, m:35, d:'30 мая, 10:30', p:'800 ₽'},
+    {n:'Цветик-семицветик',        a:2, m:40, d:'11 июля, 10:30',p:'800 ₽'},
+    {n:'Федорино горе',            a:2, m:40, d:'18 июля, 10:30',p:'800 ₽'},
+    {n:'Сказка о глупом мышонке',  a:2, m:40, d:'25 июля, 10:30',p:'800 ₽'},
+    {n:'Солдатская сказка',        a:6, m:40, d:'10 мая, 10:30', p:'800 ₽'},
+    {n:'Журавлиные перья',         a:6, m:55, d:'13 июля, 19:00',p:'1000 ₽'}
+  ];
+  var plays = document.getElementById('plays');
+  function draw(age){
+    plays.innerHTML = '';
+    PLAYS.filter(function(x){ return age==='all' || String(x.a)===age; })
+         .forEach(function(x){
+      var el = document.createElement('a');
+      el.className = 'play'; el.href = '#';
+      el.innerHTML = '<span class="age">'+x.a+'+</span>'+
+        '<span><h3>'+x.n+'</h3><span class="meta">'+x.m+' мин · '+x.d+'</span></span>'+
+        '<span class="price">'+x.p+'</span>';
+      plays.appendChild(el);
+    });
+  }
+  draw('all');
+  document.getElementById('chips').addEventListener('click', function(e){
+    var b = e.target.closest('.chip'); if(!b) return;
+    this.querySelectorAll('.chip').forEach(function(c){ c.setAttribute('aria-pressed', String(c===b)); });
+    draw(b.dataset.age);
+  });
+
+  /* ── ставни: тап на телефоне ── */
+  document.getElementById('wins').addEventListener('click', function(e){
+    var w = e.target.closest('.win'); if(!w) return;
+    w.classList.toggle('open');
+  });
+
+  /* ── облака ── */
+  var clouds = document.getElementById('clouds');
+  if(!reduce){
+    [[6,34,150,50],[22,62,210,74],[47,18,120,42],[63,72,260,86],[81,40,170,58]].forEach(function(c,i){
+      var d = document.createElement('div');
+      d.className = 'cl';
+      d.style.cssText = 'top:'+c[0]+'%;left:'+c[1]+'%;width:'+c[2]+'px;height:'+c[3]+'px;opacity:'+(0.72+i*0.05);
+      d.dataset.sp = (0.012 + i*0.009); d.dataset.x = c[1];
+      clouds.appendChild(d);
+    });
+  }
+  var cls = [].slice.call(clouds.children);
+
+  /* ── камера ── */
+  var world = document.getElementById('world'),
+      vane  = document.getElementById('vane'),
+      skyEve= document.getElementById('skyEve'),
+      sky   = document.getElementById('sky'),
+      WORLD_W = 1080, WORLD_H = 2900;
+
+  /* высота дома берётся по факту — ярусы можно добавлять и убирать */
+  function measure(){ WORLD_H = world.offsetHeight || 2900; }
+  measure();
+  addEventListener('load', measure);
+  addEventListener('resize', measure, {passive:true});
+
+  var tmx = 0, tmy = 0, mx = 0, my = 0, t = 0;
+
+  if(!reduce && matchMedia('(pointer:fine)').matches){
+    addEventListener('mousemove', function(e){
+      tmx = (e.clientX / innerWidth  - 0.5) * 2;
+      tmy = (e.clientY / innerHeight - 0.5) * 2;
+    }, {passive:true});
+  }
+
+  function frame(){
+    var vw = innerWidth, vh = innerHeight;
+    var fit = Math.min(1.05, Math.max(0.42, vw / WORLD_W));
+    var max = Math.max(1, document.documentElement.scrollHeight - vh);
+    var p   = Math.min(1, Math.max(0, scrollY / max));
+
+    /* медленный наезд: дом приближается по мере спуска */
+    var zoom = fit * (1 + p * 0.12);
+    var travel = Math.max(0, WORLD_H * zoom - vh);
+    var y = -p * travel;
+
+    mx += (tmx - mx) * 0.06;
+    my += (tmy - my) * 0.06;
+
+    world.style.transform =
+      'translate3d(' + (mx * 16).toFixed(2) + 'px,' + (y + my * 9).toFixed(2) + 'px,0) scale(' + zoom.toFixed(4) + ')';
+    sky.style.transform =
+      'translate3d(' + (mx * -30).toFixed(2) + 'px,' + (my * -12 - p * 90).toFixed(2) + 'px,0)';
+    skyEve.style.opacity = Math.min(1, Math.max(0, (p - 0.28) / 0.6)).toFixed(3);
+
+    if(!reduce){
+      t += 0.016;
+      vane.style.transform = 'rotate(' + (mx * 13 + Math.sin(t * 0.7) * 3).toFixed(2) + 'deg)';
+      cls.forEach(function(c){
+        var x = (parseFloat(c.dataset.x) + t * parseFloat(c.dataset.sp)) % 128 - 14;
+        c.style.transform = 'translate3d(' + (mx * -46).toFixed(1) + 'px,0,0)';
+        c.style.left = x + '%';
+      });
+    }
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>

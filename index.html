@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Маленький театрик кукол — Геленджик</title>
+<meta name="description" content="Театр кукол Владимира Злобина в Геленджике: живая музыка, ручные куклы и сказки для зрителей от года. Афиша, репертуар, контакты.">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;600;800;900&family=Onest:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/css/site.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="brand" href="index.html">Маленький театрик кукол<span>Геленджик</span></a>
+    <div class="nav-links">
+      <a href="#afisha">Афиша</a>
+      <a href="#about">О театре</a>
+      <a href="#troupe">Актёры</a>
+      <a href="#contacts">Контакты</a>
+    </div>
+    <a class="btn btn-orange btn-sm" href="https://gelendzhik.kassy.ru/shows/detskie/2-2333/" target="_blank" rel="noopener">Купить билет</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-grid">
+    <div>
+      <span class="chip">Театр Владимира Злобина · Геленджик</span>
+      <h1>Куклы, которые <em>говорят</em> с вашим ребёнком</h1>
+      <p class="hero-sub">Живая музыка, ручные куклы и сказки, которые дети смотрят молча, а потом пересказывают неделю. Для зрителей от года.</p>
+      <div class="hero-cta">
+        <a class="btn btn-yellow" href="#afisha">Смотреть афишу</a>
+        <a class="btn btn-ghost" href="#about">Про театр</a>
+      </div>
+    </div>
+    <div class="hero-art">
+      <div class="mascot hero-mascot" id="heroMascot"><span class="mascot-tag">3D-маскот<br>ближайшего спектакля</span></div>
+      <div class="ticket" id="heroTicket"></div>
+    </div>
+  </div>
+</header>
+
+<!-- волнистая лента -->
+<div class="ribbon" aria-hidden="true">
+  <svg viewBox="0 0 1200 300" role="presentation">
+    <defs>
+      <path id="ribbonPath" d="M -40 214 C 170 66, 390 44, 566 132 C 726 212, 862 250, 1002 172 C 1092 122, 1152 92, 1264 112"></path>
+    </defs>
+    <use href="#ribbonPath" class="band-edge"></use>
+    <use href="#ribbonPath" class="band"></use>
+    <text><textPath href="#ribbonPath" startOffset="2%">живая музыка · ручные куклы · от 1 года · фото с куклами бесплатно · сцена с собой</textPath></text>
+  </svg>
+</div>
+
+<section id="afisha">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">Что играем</span>
+        <h2>Афиша</h2>
+      </div>
+      <a class="btn btn-sm btn-line" href="#contacts">Заказать спектакль в сад или школу</a>
+    </div>
+    <div class="cards" id="afishaCards"></div>
+    <noscript><p class="sec-note" style="margin-top:20px">Афиша подгружается скриптом. Включите JavaScript или позвоните: +7 912 337-41-97.</p></noscript>
+  </div>
+</section>
+
+<section id="about">
+  <div class="about">
+    <div class="about-grid">
+      <div>
+        <span class="chip">О театре</span>
+        <h2 style="margin-top:18px">У нас нет своего здания — зато есть свой зритель</h2>
+        <p>Мы играем в Малом зале ДК им. Плешкова, на детской площадке «Город сказок», в школах и садах Геленджика. Привозим ширму, свет, кукол и инструменты — и собираем театр там, где нас ждут.</p>
+        <p>Музыку играют те же люди, что ведут кукол: никакой фонограммы. После спектакля куклы остаются на сцене — можно подойти, потрогать и сфотографироваться. Бесплатно.</p>
+        <div class="nums">
+          <div class="num"><b>16</b><span>спектаклей в репертуаре</span></div>
+          <div class="num"><b>1+</b><span>с какого возраста</span></div>
+          <div class="num"><b>35–55</b><span>минут без антракта</span></div>
+          <div class="num"><b>0 ₽</b><span>фото с куклами после</span></div>
+        </div>
+      </div>
+      <div class="collage">
+        <figure><img src="assets/photo/scene-shirma.jpg" alt="Сцена с расписными ширмами и куклами"></figure>
+        <figure><img src="assets/photo/seagulls.jpg" alt="Актрисы ведут марионеток-чаек"></figure>
+        <figure><img src="assets/photo/russian-tale.jpg" alt="Сцена русской сказки с печкой"></figure>
+        <figure><img src="assets/photo/frogs.jpg" alt="Куклы-лягушки на марионеточных нитях"></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">Как это выглядит</span>
+        <h2>Сорок минут, <br>на которых тихо</h2>
+      </div>
+      <p class="sec-note">Мы играем на расстоянии вытянутой руки от первого ряда: куклу видно целиком, а актёра — вместе с ней.</p>
+    </div>
+
+    <div class="mosaic">
+      <div class="mos m1">
+        <img src="assets/photo/audience.jpg" alt="Зрительный зал: дети и родители смотрят спектакль">
+        <span class="bubble b1">Зрители от года — с родителями</span>
+      </div>
+      <div class="mos m2 mos-text m-violet">
+        <h3>Куклы в руках, а не за кулисами</h3>
+        <ul>
+          <li>Тростевые, перчаточные и марионетки — в одном спектакле</li>
+          <li>Актёр на виду: ребёнок понимает, как кукла оживает</li>
+          <li>После поклона куклу можно потрогать</li>
+        </ul>
+      </div>
+      <div class="mos m3">
+        <img src="assets/photo/kids-giraffe.jpg" alt="Дети рассматривают кукол после спектакля">
+        <span class="bubble b2">Фото с куклами — 0 ₽</span>
+      </div>
+      <div class="mos m4">
+        <img src="assets/photo/soldiers.jpg" alt="Актрисы в военной форме с куклами из спектакля о войне">
+      </div>
+      <div class="mos m5 mos-text m-orange">
+        <h3>Живая музыка без фонограммы</h3>
+        <ul>
+          <li>Инструменты стоят прямо на сцене</li>
+          <li>Играют те же актёры, что ведут кукол</li>
+          <li>Громкость — под самых маленьких</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="troupe">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">Кто играет</span>
+        <h2>Труппа</h2>
+      </div>
+      <p class="sec-note">Каждая ведёт по три-четыре куклы за спектакль и играет на инструментах вживую.</p>
+    </div>
+    <div class="troupe">
+      <div class="actor">
+        <div class="ph-p p4">Фото<br>Светланы Валентиновны</div>
+        <b>Светлана Валентиновна Дербенева</b>
+        <small>художественный руководитель</small>
+        <span class="role">худрук</span>
+      </div>
+      <div class="actor">
+        <div class="ph-p p1">Фото<br>Юлии</div>
+        <b>Юлия</b>
+        <small>актриса, кукловод</small>
+      </div>
+      <div class="actor">
+        <div class="ph-p p2">Фото<br>Радмилы</div>
+        <b>Радмила</b>
+        <small>актриса, кукловод</small>
+      </div>
+      <div class="actor">
+        <div class="ph-p p3">Фото<br>Ксении</div>
+        <b>Ксения</b>
+        <small>актриса, кукловод</small>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contacts">
+  <div class="contacts">
+    <span class="chip">Контакты</span>
+    <h2 style="margin-top:18px">Позвоните — подберём спектакль</h2>
+    <div class="c-grid">
+      <div class="c-card">
+        <h3>Телефоны</h3>
+        <a href="tel:+79123374197">+7 912 337-41-97</a>
+        <a href="tel:+79951903629">+7 995 190-36-29</a>
+        <a href="tel:+78614133240">8 (86141) 3-32-40</a>
+      </div>
+      <div class="c-card">
+        <h3>Где играем</h3>
+        <p class="plain">ДК им. Л. Плешкова, Малый зал<br>Геленджикский проспект, 95</p>
+        <p class="plain" style="margin-top:10px">Площадка «Город сказок»<br>Школы и детские сады</p>
+      </div>
+      <div class="c-card">
+        <h3>Соцсети</h3>
+        <a href="#contacts">Telegram — афиша</a>
+        <a href="#contacts">ВКонтакте</a>
+        <p class="plain" style="margin-top:10px">Заказать спектакль в сад или школу — по телефону.</p>
+      </div>
+    </div>
+    <div class="c-cta">
+      <a class="btn btn-yellow" href="https://gelendzhik.kassy.ru/shows/detskie/2-2333/" target="_blank" rel="noopener">Купить билет</a>
+      <a class="btn btn-ghost" href="#contacts">Подписаться на афишу</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Маленький театрик кукол · Театр Владимира Злобина · Геленджик · <a href="admin.html">админка</a>
+</footer>
+
+<script src="assets/js/store.js"></script>
+<script>
+(function(){
+  'use strict';
+  var esc = TEATR.escapeHtml;
+
+  /* ── карточки афиши ── */
+  function cardHtml(s){
+    var date = s.date ? '<span class="card-date">' + esc(TEATR.formatShort(s.date)) + '</span>' : '';
+    var art = s.mascot
+      ? '<img src="' + esc(s.mascot) + '" alt="Маскот спектакля «' + esc(s.title) + '»">'
+      : '<span class="mascot-tag">3D-маскот<br>«' + esc(s.title) + '»</span>';
+    return '' +
+      '<article class="card">' +
+        '<a class="card-art ' + esc(s.art || 'a1') + '" href="spektakl.html?id=' + encodeURIComponent(s.id) + '">' + date + art + '</a>' +
+        '<h3><a href="spektakl.html?id=' + encodeURIComponent(s.id) + '">' + esc(s.title) + '</a></h3>' +
+        '<div class="meta">' +
+          '<span class="tag">' + esc(s.age) + '</span>' +
+          '<span class="tag">' + esc(s.duration) + ' минут</span>' +
+          (s.tagline ? '<span class="tag">' + esc(s.tagline) + '</span>' : '') +
+        '</div>' +
+        '<p>' + esc(s.short) + '</p>' +
+        '<div class="card-foot">' +
+          '<b>' + esc(s.price) + ' ₽</b>' +
+          '<a class="btn btn-orange btn-sm" href="' + esc(s.ticketUrl || TEATR.TICKET_URL) + '" target="_blank" rel="noopener">Билет</a>' +
+        '</div>' +
+      '</article>';
+  }
+
+  var box = document.getElementById('afishaCards');
+  var shows = TEATR.published();
+  box.innerHTML = shows.map(cardHtml).join('');
+
+  /* ── билет ближайшего спектакля в герое ── */
+  var n = TEATR.next();
+  if (n) {
+    var when = n.date ? TEATR.formatDate(n.date) : 'дата уточняется';
+    document.getElementById('heroTicket').innerHTML = '' +
+      '<span class="eyebrow">Ближайший</span>' +
+      '<b><a href="spektakl.html?id=' + encodeURIComponent(n.id) + '">' + esc(n.title) + '</a></b>' +
+      '<small>' + esc(when) + '</small>' +
+      '<small>' + esc(n.venue) + '</small>' +
+      '<span class="price">' + esc(n.price) + ' ₽ · ' + esc(n.age) + '</span>';
+    if (n.mascot) {
+      document.getElementById('heroMascot').innerHTML =
+        '<img src="' + esc(n.mascot) + '" alt="Маскот спектакля «' + esc(n.title) + '»">';
+    } else {
+      document.getElementById('heroMascot').innerHTML =
+        '<span class="mascot-tag">3D-маскот<br>«' + esc(n.title) + '»</span>';
+    }
+  }
+})();
+</script>
+</body>
+</html>

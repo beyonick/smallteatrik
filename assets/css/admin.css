@@ -1,0 +1,114 @@
+/* ───────────────────────────────────────────────
+   Админка «Маленького театрика кукол»
+   Утилитарный интерфейс на той же палитре, что и сайт.
+   ─────────────────────────────────────────────── */
+
+body.admin{background:#F7F3EC}
+
+.adm-top{
+  position:sticky;top:env(safe-area-inset-top,0px);z-index:50;
+  background:var(--ink);color:var(--white);padding:14px 20px;
+}
+.adm-top-in{width:min(1240px,100%);margin-inline:auto;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.adm-top .brand{color:var(--white)}
+.adm-top .brand span{color:rgba(255,255,255,.6)}
+.adm-badge{background:var(--yellow);color:var(--ink);border-radius:999px;padding:5px 12px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.adm-top-actions{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+
+.adm-wrap{width:min(1240px,100%);margin-inline:auto;padding-inline:20px;padding-block:28px 60px}
+.adm-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-bottom:22px}
+.adm-head h1{font-size:clamp(28px,3.6vw,44px)}
+.adm-head p{color:var(--ink-2);font-size:15px;margin-top:8px;max-width:62ch}
+
+.adm-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:24px;align-items:start}
+
+/* ── список спектаклей ── */
+.adm-list{display:flex;flex-direction:column;gap:12px}
+.adm-item{
+  background:var(--white);border-radius:20px;padding:14px 16px;display:grid;
+  grid-template-columns:52px minmax(0,1fr) auto;gap:14px;align-items:center;
+  box-shadow:0 14px 30px -26px rgba(36,16,70,.8);border:2px solid transparent;
+}
+.adm-item.is-active{border-color:var(--violet)}
+.adm-item.is-hidden{opacity:.55}
+.adm-thumb{width:52px;height:52px;border-radius:14px;overflow:hidden;display:grid;place-items:center;font-size:10px;font-weight:700;color:var(--ink-2);text-align:center;line-height:1.2}
+.adm-thumb img{width:100%;height:100%;object-fit:cover}
+.adm-item b{display:block;font-family:var(--disp);font-size:15px;font-weight:800;line-height:1.2}
+.adm-item small{display:block;color:var(--ink-2);font-size:13px;margin-top:4px}
+.adm-item-actions{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end}
+.icon-btn{
+  border:0;background:var(--cream-2);color:var(--ink);border-radius:10px;width:32px;height:32px;
+  cursor:pointer;font-size:14px;line-height:1;display:grid;place-items:center;transition:background .15s;
+}
+.icon-btn:hover{background:var(--yellow)}
+.icon-btn.danger:hover{background:#FFC9BC}
+
+/* ── форма ── */
+.adm-form{background:var(--white);border-radius:26px;padding:26px;box-shadow:0 20px 44px -34px rgba(36,16,70,.9)}
+.adm-form h2{font-size:24px}
+.adm-form .hint{color:var(--ink-2);font-size:14px;margin-top:6px}
+.f-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:20px}
+.field{display:flex;flex-direction:column;gap:6px}
+.field.full{grid-column:1 / -1}
+.field label{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-2)}
+.field input,.field select,.field textarea{
+  font-family:var(--sans);font-size:15px;color:var(--ink);background:#FBF8F2;
+  border:2px solid #E7DECB;border-radius:14px;padding:11px 14px;width:100%;
+}
+.field textarea{resize:vertical;min-height:96px;line-height:1.5}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--violet)}
+.field .err{color:#C43A1E;font-size:13px;font-weight:600}
+.field small{color:var(--ink-2);font-size:12px}
+
+.check{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:600}
+.check input{width:20px;height:20px;accent-color:var(--violet)}
+
+.tones{display:flex;gap:8px;flex-wrap:wrap}
+.tone-dot{width:34px;height:34px;border-radius:12px;border:3px solid transparent;cursor:pointer;padding:0}
+.tone-dot[aria-pressed="true"]{border-color:var(--ink)}
+.t-violet{background:var(--violet)}.t-orange{background:var(--orange)}.t-mint{background:var(--mint)}
+.t-yellow{background:var(--yellow)}.t-pink{background:var(--pink)}.t-sky{background:var(--sky)}
+
+.mascot-row{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.mascot-preview{
+  width:88px;height:88px;border-radius:18px;background:linear-gradient(160deg,var(--yellow),var(--orange));
+  display:grid;place-items:center;overflow:hidden;font-size:10px;font-weight:700;color:var(--ink);text-align:center;padding:6px;line-height:1.3;
+}
+.mascot-preview img{width:100%;height:100%;object-fit:contain}
+
+.photo-pick{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.photo-pick label{position:relative;cursor:pointer;border-radius:12px;overflow:hidden;aspect-ratio:1/1;display:block;border:3px solid transparent}
+.photo-pick input{position:absolute;opacity:0;pointer-events:none}
+.photo-pick img{width:100%;height:100%;object-fit:cover}
+.photo-pick input:checked + img{outline:none}
+.photo-pick label:has(input:checked){border-color:var(--violet)}
+.photo-pick label:has(input:checked)::after{
+  content:"✓";position:absolute;right:4px;top:2px;color:var(--white);font-weight:800;font-size:14px;
+  text-shadow:0 2px 6px rgba(0,0,0,.7);
+}
+
+.form-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px;padding-top:20px;border-top:2px solid var(--cream-2)}
+
+.toast{
+  position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:90;
+  background:var(--ink);color:var(--white);border-radius:999px;padding:13px 24px;font-weight:600;font-size:15px;
+  box-shadow:0 20px 40px -20px rgba(36,16,70,.9);
+}
+.toast.warn{background:#C43A1E}
+
+.adm-note{
+  background:#FFF6DC;border:2px solid var(--yellow);border-radius:18px;padding:16px 18px;
+  font-size:14px;color:var(--ink);line-height:1.55;margin-bottom:22px;
+}
+.adm-note b{font-weight:700}
+
+@media(max-width:980px){
+  .adm-grid{grid-template-columns:1fr}
+  .photo-pick{grid-template-columns:repeat(4,1fr)}
+}
+@media(max-width:620px){
+  .f-grid{grid-template-columns:1fr}
+  .photo-pick{grid-template-columns:repeat(3,1fr)}
+  .adm-item{grid-template-columns:44px minmax(0,1fr)}
+  .adm-item-actions{grid-column:1 / -1;justify-content:flex-start}
+}

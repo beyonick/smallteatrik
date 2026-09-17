@@ -1,0 +1,349 @@
+<title>Театрик кукол — Ночная афиша</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Seymour+One&family=Manrope:wght@400;500;600;700;800&display=swap">
+<style>
+:root{
+  --night:#1B0F2E;
+  --night-2:#2B1A45;
+  --night-3:#3C2760;
+  --lime:#C8FF3D;
+  --coral:#FF5C39;
+  --sky:#57C7FF;
+  --lilac:#C6A8FF;
+  --paper:#F6F1E8;
+  --paper-2:#E8DFCF;
+  --ink:#1B0F2E;
+  --mute:#B8A6D6;
+  --disp:"Seymour One","Arial Black",Impact,system-ui,sans-serif;
+  --sans:"Manrope","Segoe UI",system-ui,sans-serif;
+  --r-xl:48px; --r-l:32px; --r-m:22px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--night);color:var(--paper);font-family:var(--sans);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased}
+h1,h2{margin:0;font-family:var(--disp);font-weight:400;line-height:1;letter-spacing:-.005em;text-wrap:balance;text-transform:lowercase}
+h3{margin:0;font-family:var(--sans);font-weight:800;line-height:1.15;text-wrap:balance}
+p{margin:0}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+:focus-visible{outline:3px solid var(--lime);outline-offset:3px;border-radius:10px}
+.wrap{width:min(1180px,100%);margin-inline:auto;padding-inline:20px}
+section{padding-block:clamp(56px,7vw,110px)}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-weight:800;font-size:12px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--night);background:var(--lime);border-radius:999px;padding:8px 16px}
+.kicker-line{color:var(--lime);background:transparent;box-shadow:inset 0 0 0 2px rgba(200,255,61,.45)}
+.btn{display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer;font-family:var(--sans);font-weight:800;font-size:15px;
+  padding:15px 28px;border-radius:999px;background:var(--lime);color:var(--night);transition:transform .16s,filter .16s}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
+.btn-coral{background:var(--coral);color:var(--paper)}
+.btn-sm{padding:11px 20px;font-size:14px}
+.btn-line{background:transparent;color:var(--paper);box-shadow:inset 0 0 0 2px rgba(246,241,232,.35)}
+.btn-line:hover{background:rgba(246,241,232,.1)}
+
+/* шапка */
+.nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:60;padding-block:14px;padding-inline:20px}
+.nav-in{display:flex;align-items:center;gap:16px;width:min(1180px,100%);margin-inline:auto;background:var(--night-2);
+  border-radius:999px;padding:9px 9px 9px 22px;box-shadow:0 14px 34px -20px #000}
+.brand{font-family:var(--disp);font-size:14px;line-height:1.1;white-space:nowrap;text-transform:lowercase}
+.brand span{display:block;font-family:var(--sans);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.nav-links{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+.nav-links a{padding:10px 14px;border-radius:999px;font-weight:700;font-size:14px;color:var(--paper);transition:background .18s}
+.nav-links a:hover{background:var(--night-3)}
+
+/* герой */
+.hero{padding-inline:20px;padding-block:clamp(26px,3vw,44px) 0}
+.hero-in{width:min(1180px,100%);margin-inline:auto;position:relative;text-align:center;
+  background:radial-gradient(120% 100% at 50% 0%,var(--night-3) 0%,var(--night-2) 55%,var(--night) 100%);
+  border-radius:var(--r-xl);padding:clamp(32px,5vw,66px) clamp(20px,4vw,52px) clamp(28px,4vw,52px)}
+.hero h1{font-size:clamp(38px,8.6vw,118px);color:var(--paper)}
+.hero h1 .lime{color:var(--lime)}
+.hero h1 .coral{color:var(--coral)}
+.hero-sub{margin-inline:auto;margin-top:24px;max-width:52ch;color:var(--mute);font-size:clamp(16px,1.3vw,19px)}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:30px}
+.hero-mascot{position:relative;margin-top:36px;height:clamp(230px,26vw,320px);display:grid;place-items:center}
+.blob{width:clamp(210px,24vw,300px);aspect-ratio:1/1;max-width:100%;border-radius:46% 54% 52% 48%/50% 46% 54% 50%;
+  background:linear-gradient(150deg,var(--lime),var(--sky));display:grid;place-items:center;text-align:center;padding:24px;
+  color:var(--night);font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase;line-height:1.6;
+  box-shadow:0 40px 70px -34px rgba(200,255,61,.45)}
+.sticker{position:absolute;border-radius:var(--r-m);padding:14px 18px;font-weight:800;font-size:13px;line-height:1.3;
+  box-shadow:0 20px 36px -22px #000}
+.st-1{left:2%;top:8%;background:var(--coral);color:var(--paper);transform:rotate(-7deg)}
+.st-2{right:2%;top:20%;background:var(--paper);color:var(--night);transform:rotate(6deg)}
+.st-3{left:12%;bottom:2%;background:var(--lilac);color:var(--night);transform:rotate(4deg)}
+.st-4{right:10%;bottom:6%;background:var(--night-2);color:var(--lime);transform:rotate(-5deg);box-shadow:inset 0 0 0 2px var(--lime)}
+
+/* афиша — строки-билеты */
+.sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:22px;flex-wrap:wrap;margin-bottom:34px}
+.sec-head h2{font-size:clamp(32px,5.6vw,72px);margin-top:14px}
+.rows{display:flex;flex-direction:column;gap:18px}
+.row{display:grid;grid-template-columns:150px 1fr auto;gap:24px;align-items:center;background:var(--night-2);
+  border-radius:var(--r-l);padding:20px 24px;transition:transform .22s,background .22s}
+.row:nth-child(odd){transform:rotate(-.7deg)}
+.row:nth-child(even){transform:rotate(.7deg)}
+.row:hover{transform:rotate(0deg) translateY(-4px);background:var(--night-3)}
+.row-art{aspect-ratio:1/1;max-width:100%;border-radius:var(--r-m);display:grid;place-items:center;text-align:center;padding:10px;
+  font-weight:800;font-size:10px;letter-spacing:.09em;text-transform:uppercase;color:var(--night);line-height:1.5}
+.g1{background:linear-gradient(150deg,var(--lime),#7FE0A8)}
+.g2{background:linear-gradient(150deg,var(--sky),var(--lilac))}
+.g3{background:linear-gradient(150deg,#FFD166,var(--coral))}
+.g4{background:linear-gradient(150deg,var(--lilac),#FF9FD6)}
+.g5{background:linear-gradient(150deg,#FFF3A8,var(--lime))}
+.g6{background:linear-gradient(150deg,#9FF4FF,var(--sky))}
+.row h3{font-size:clamp(22px,2.4vw,30px)}
+.row p{color:var(--mute);font-size:15px;margin-top:8px;max-width:58ch}
+.chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}
+.chip{border-radius:999px;padding:5px 12px;font-size:12px;font-weight:800;background:var(--night-3);color:var(--paper)}
+.chip.hi{background:var(--lime);color:var(--night)}
+.row-buy{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.row-buy b{font-family:var(--disp);font-size:22px;color:var(--lime)}
+
+/* о театре — светлый разворот */
+.about{background:var(--paper);color:var(--ink);border-radius:var(--r-xl);margin-inline:20px;padding:clamp(28px,4.2vw,66px)}
+.about .kicker{background:var(--coral);color:var(--paper)}
+.about h2{font-size:clamp(30px,4.4vw,58px);margin-top:16px;color:var(--ink)}
+.about-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(26px,3.6vw,56px);align-items:center;margin-top:26px}
+.about p{color:#54446E;max-width:52ch}
+.about p + p{margin-top:14px}
+.blobs{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:30px}
+.bnum{border-radius:var(--r-m);padding:18px 20px;background:var(--paper-2)}
+.bnum b{display:block;font-family:var(--disp);font-size:32px;line-height:1.1;color:var(--ink)}
+.bnum span{font-size:13px;font-weight:700;color:#6B5A85}
+.bnum:nth-child(1){background:#E4FFA8}
+.bnum:nth-child(2){background:#CFEEFF}
+.bnum:nth-child(3){background:#FFD9CE}
+.bnum:nth-child(4){background:#EADCFF}
+.photos{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.photo{border-radius:var(--r-m);min-height:150px;display:grid;place-items:center;text-align:center;padding:12px;
+  border:2px dashed rgba(27,15,46,.28);background:var(--paper-2);color:#6B5A85;
+  font-weight:800;font-size:11px;letter-spacing:.1em;text-transform:uppercase;line-height:1.5}
+.photo:nth-child(1){transform:rotate(-2.6deg)}
+.photo:nth-child(2){transform:rotate(2.2deg);margin-top:22px}
+.photo:nth-child(3){transform:rotate(1.8deg)}
+.photo:nth-child(4){transform:rotate(-2deg);margin-top:18px}
+
+/* актёры */
+.troupe{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
+.actor{text-align:center}
+.face{aspect-ratio:1/1;max-width:100%;border-radius:50%;display:grid;place-items:center;text-align:center;padding:14px;
+  border:2px dashed rgba(246,241,232,.35);color:var(--mute);font-weight:800;font-size:11px;letter-spacing:.09em;
+  text-transform:uppercase;line-height:1.5;transition:transform .22s}
+.actor:nth-child(1) .face{background:var(--night-2);transform:rotate(-3deg)}
+.actor:nth-child(2) .face{background:var(--night-3);transform:rotate(3deg)}
+.actor:nth-child(3) .face{background:var(--night-2);transform:rotate(-2deg)}
+.actor:nth-child(4) .face{background:var(--night-3);transform:rotate(2.6deg)}
+.actor:nth-child(5) .face{background:var(--night-2);transform:rotate(-3.4deg)}
+.actor:hover .face{transform:rotate(0deg) translateY(-6px)}
+.actor b{display:block;font-weight:800;font-size:15px;margin-top:14px}
+.actor small{color:var(--mute);font-size:12px;font-weight:600}
+
+/* контакты */
+.contacts{background:var(--lime);color:var(--night);border-radius:var(--r-xl);margin-inline:20px;padding:clamp(28px,4.2vw,66px)}
+.contacts .kicker{background:var(--night);color:var(--lime)}
+.contacts h2{font-size:clamp(30px,4.6vw,62px);margin-top:16px;color:var(--night)}
+.c-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:36px}
+.c-card{background:rgba(27,15,46,.09);border-radius:var(--r-l);padding:24px}
+.c-card h3{font-size:12px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#4A3A2E;margin-bottom:14px}
+.c-card a{display:block;font-weight:800;font-size:19px;line-height:1.55}
+.c-card a:hover{color:var(--coral)}
+.c-card .plain{font-size:15px;font-weight:600;color:#3A2E22;line-height:1.55}
+.c-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:32px}
+.btn-night{background:var(--night);color:var(--lime)}
+footer{padding-block:34px;text-align:center;color:var(--mute);font-size:14px}
+
+@media(max-width:980px){
+  .about-grid{grid-template-columns:1fr}
+  .row{grid-template-columns:110px 1fr;gap:18px}
+  .row-buy{grid-column:1/-1;flex-direction:row;align-items:center;justify-content:space-between}
+  .troupe{grid-template-columns:repeat(3,1fr)}
+  .c-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:620px){
+  body{font-size:16px}
+  .nav-links{display:none}
+  .troupe{grid-template-columns:repeat(2,1fr)}
+  .c-grid{grid-template-columns:1fr}
+  .row{grid-template-columns:1fr;transform:none}
+  .row-art{max-width:150px}
+  .sticker{display:none}
+  .hero-in,.about,.contacts{margin-inline:0;border-radius:28px}
+  .about,.contacts{margin-inline:12px}
+  .wrap{padding-inline:16px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none}}
+</style>
+
+<nav class="nav">
+  <div class="nav-in">
+    <div class="brand">маленький театрик кукол<span>Геленджик</span></div>
+    <div class="nav-links">
+      <a href="#afisha">Афиша</a>
+      <a href="#about">О театре</a>
+      <a href="#troupe">Актёры</a>
+      <a href="#contacts">Контакты</a>
+    </div>
+    <a class="btn btn-coral btn-sm" href="#afisha">Купить билет</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="hero-in">
+    <span class="kicker">Геленджик · театр Владимира Злобина</span>
+    <h1>куклы, <span class="lime">музыка</span><br>и <span class="coral">сказка</span> на 35 минут</h1>
+    <p class="hero-sub">Маленький театрик кукол. Играем вживую — без фонограммы, с ручными куклами, для зрителей от года. Своего здания нет: приезжаем в ДК, школы и сады.</p>
+    <div class="hero-cta">
+      <a class="btn" href="#afisha">Смотреть афишу</a>
+      <a class="btn btn-line" href="#about">О театре</a>
+    </div>
+    <div class="hero-mascot">
+      <div class="sticker st-1">13 июля, 19:00<br>«Журавлиные перья»</div>
+      <div class="sticker st-2">от 1 года</div>
+      <div class="sticker st-3">живая музыка</div>
+      <div class="sticker st-4">фото с куклами — 0 ₽</div>
+      <div class="blob">3D-маскот<br>«Журавль»</div>
+    </div>
+  </div>
+</header>
+
+<section id="afisha">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="kicker kicker-line">Что играем</span>
+        <h2>афиша</h2>
+      </div>
+      <p style="max-width:34ch;color:var(--mute);font-size:15px">Шесть из шестнадцати спектаклей репертуара. Остальные привозим по заявке.</p>
+    </div>
+    <div class="rows">
+      <article class="row">
+        <div class="row-art g1">3D-маскот<br>«Журавль»</div>
+        <div>
+          <h3>Журавлиные перья</h3>
+          <p>Японская сказка о выборе и о том, как легко разрушить то, что кажется самым важным. Куклы, живая музыка и приёмы японского театра.</p>
+          <div class="chips"><span class="chip hi">13 июля, 19:00</span><span class="chip">6+</span><span class="chip">55 минут</span><span class="chip">ДК им. Плешкова</span></div>
+        </div>
+        <div class="row-buy"><b>1000 ₽</b><a class="btn btn-sm" href="#contacts">Билет</a></div>
+      </article>
+      <article class="row">
+        <div class="row-art g2">3D-маскот<br>«Гусь»</div>
+        <div>
+          <h3>Гуси-лебеди</h3>
+          <p>Русская сказка о смелости, доброте и любви к близким. Играем в зале и под открытым небом на площадке «Город сказок».</p>
+          <div class="chips"><span class="chip">2+</span><span class="chip">35 минут</span><span class="chip">русская сказка</span></div>
+        </div>
+        <div class="row-buy"><b>800 ₽</b><a class="btn btn-sm" href="#contacts">Билет</a></div>
+      </article>
+      <article class="row">
+        <div class="row-art g3">3D-маскот<br>«Козявочка»</div>
+        <div>
+          <h3>Козявочка</h3>
+          <p>Спектакль о рождении и познании мира: цветок, шмель, червяк, рыбы и лягушка. Музыкальный и интерактивный — для самых маленьких.</p>
+          <div class="chips"><span class="chip">1+</span><span class="chip">35 минут</span><span class="chip">интерактив</span></div>
+        </div>
+        <div class="row-buy"><b>800 ₽</b><a class="btn btn-sm" href="#contacts">Билет</a></div>
+      </article>
+      <article class="row">
+        <div class="row-art g4">3D-маскот<br>«Жук»</div>
+        <div>
+          <h3>Похождения жука-носорога</h3>
+          <p>По рассказу К. Паустовского. Мальчик подарил отцу, уходящему на фронт, живого жука. Жук прошёл всю войну рядом с солдатом.</p>
+          <div class="chips"><span class="chip">6+</span><span class="chip">40 минут</span><span class="chip">К. Паустовский</span></div>
+        </div>
+        <div class="row-buy"><b>800 ₽</b><a class="btn btn-sm" href="#contacts">Билет</a></div>
+      </article>
+      <article class="row">
+        <div class="row-art g5">3D-маскот<br>«Колобок»</div>
+        <div>
+          <h3>Колобок</h3>
+          <p>Самая первая сказка в жизни зрителя: короткая, громкая и с песнями. Подходит для первого похода в театр.</p>
+          <div class="chips"><span class="chip">1+</span><span class="chip">35 минут</span><span class="chip">первый театр</span></div>
+        </div>
+        <div class="row-buy"><b>800 ₽</b><a class="btn btn-sm" href="#contacts">Билет</a></div>
+      </article>
+      <article class="row">
+        <div class="row-art g6">3D-маскот<br>«Лягушка»</div>
+        <div>
+          <h3>Лягушка-путешественница</h3>
+          <p>О том, как важно вовремя промолчать. С полётом на прутике и оркестром из двух человек прямо на сцене.</p>
+          <div class="chips"><span class="chip">1+</span><span class="chip">35 минут</span><span class="chip">живая музыка</span></div>
+        </div>
+        <div class="row-buy"><b>800 ₽</b><a class="btn btn-sm" href="#contacts">Билет</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="about" style="padding-block:0">
+  <div class="about">
+    <span class="kicker">О театре</span>
+    <h2>театр, который приезжает сам</h2>
+    <div class="about-grid">
+      <div>
+        <p>Своего здания у нас нет — и это не мешает. Малый зал ДК им. Плешкова, детская площадка «Город сказок», школы и детские сады Геленджика: привозим ширму, свет, кукол и инструменты и собираем сцену там, где нас ждут.</p>
+        <p>Музыку играют те же пятеро, кто ведёт кукол. После спектакля куклы остаются на сцене — можно подойти, потрогать и сфотографироваться, бесплатно.</p>
+        <div class="blobs">
+          <div class="bnum"><b>5</b><span>актёров в труппе</span></div>
+          <div class="bnum"><b>16</b><span>спектаклей в репертуаре</span></div>
+          <div class="bnum"><b>1+</b><span>с какого возраста</span></div>
+          <div class="bnum"><b>35–55</b><span>минут без антракта</span></div>
+        </div>
+      </div>
+      <div class="photos">
+        <div class="photo">Фото<br>со спектакля</div>
+        <div class="photo">Фото<br>кукол</div>
+        <div class="photo">Фото<br>зала</div>
+        <div class="photo">Фото<br>репетиции</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="troupe">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="kicker kicker-line">Кто играет</span>
+        <h2>труппа</h2>
+      </div>
+      <p style="max-width:34ch;color:var(--mute);font-size:15px">Пять человек: три-четыре куклы и один инструмент на каждого за спектакль.</p>
+    </div>
+    <div class="troupe">
+      <div class="actor"><div class="face">Фото<br>актёра</div><b>Владимир Злобин</b><small>худрук, кукловод</small></div>
+      <div class="actor"><div class="face">Фото<br>актёра</div><b>Имя Фамилия</b><small>кукловод, музыка</small></div>
+      <div class="actor"><div class="face">Фото<br>актёра</div><b>Имя Фамилия</b><small>кукловод, вокал</small></div>
+      <div class="actor"><div class="face">Фото<br>актёра</div><b>Имя Фамилия</b><small>кукловод, свет</small></div>
+      <div class="actor"><div class="face">Фото<br>актёра</div><b>Имя Фамилия</b><small>кукловод, реквизит</small></div>
+    </div>
+  </div>
+</section>
+
+<section id="contacts" style="padding-block:0 0">
+  <div class="contacts">
+    <span class="kicker">Контакты</span>
+    <h2>позвоните нам</h2>
+    <div class="c-grid">
+      <div class="c-card">
+        <h3>Телефоны</h3>
+        <a href="tel:+79123374197">+7 912 337-41-97</a>
+        <a href="tel:+79951903629">+7 995 190-36-29</a>
+        <a href="tel:+78614133240">8 (86141) 3-32-40</a>
+      </div>
+      <div class="c-card">
+        <h3>Где играем</h3>
+        <p class="plain">ДК им. Л. Плешкова, Малый зал<br>Геленджикский проспект, 95</p>
+        <p class="plain" style="margin-top:10px">Площадка «Город сказок»<br>Школы и детские сады</p>
+      </div>
+      <div class="c-card">
+        <h3>Соцсети</h3>
+        <a href="#contacts">Telegram — афиша</a>
+        <a href="#contacts">ВКонтакте</a>
+        <p class="plain" style="margin-top:10px">Заявка на выездной спектакль — по телефону.</p>
+      </div>
+    </div>
+    <div class="c-cta">
+      <a class="btn btn-night" href="#afisha">Купить билет</a>
+      <a class="btn btn-coral" href="#contacts">Подписаться на афишу</a>
+    </div>
+  </div>
+</section>
+
+<footer>Маленький театрик кукол · Театр Владимира Злобина · Геленджик</footer>
