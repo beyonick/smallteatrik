@@ -118,7 +118,7 @@ section{padding-block:clamp(56px,7vw,110px)}
 .ticket .price{margin-top:12px;display:inline-block;background:var(--mint);border-radius:999px;padding:6px 14px;font-weight:700;font-size:14px}
 
 /* ── волнистая лента ── */
-.ribbon{margin-block:clamp(10px,3vw,30px) 0;overflow:hidden}
+.ribbon{margin-block:clamp(10px,3vw,30px) 0;overflow:hidden;display:flex;justify-content:center}
 .ribbon svg{display:block;width:100%;height:auto;min-width:760px}
 .ribbon-scroll{overflow-x:hidden}
 .ribbon .band{fill:none;stroke:var(--yellow);stroke-width:62;stroke-linecap:round}
@@ -287,6 +287,10 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   .hero,.about,.contacts,.show-hero{margin-inline:12px;border-radius:28px}
   .wrap{padding-inline:16px}
   .ticket{position:static;width:auto;transform:none;margin-top:16px}
+  .brand{white-space:normal;font-size:13px;line-height:1.15}
+  .nav{padding-inline:12px}
+  .nav-in{padding:8px 8px 8px 16px;gap:10px}
+  .nav-in .btn-sm{padding:10px 15px;font-size:13px}
   .hero-mascot{position:relative;min-height:240px}
   .mosaic{grid-template-columns:1fr}
   .m1,.m2,.m3,.m4,.m5{grid-column:span 1}
