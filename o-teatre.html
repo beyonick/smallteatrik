@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Маленький театрик кукол — Геленджик</title>
-<meta name="description" content="Театр кукол Владимира Злобина в Геленджике: живая музыка, ручные куклы и сказки для зрителей от года. Афиша, расписание, актёры, контакты.">
+<title>О театре — Маленький театрик кукол, Геленджик</title>
+<meta name="description" content="Маленький театрик кукол — театр Владимира Злобина в Геленджике: живая музыка, ручные куклы, выездные спектакли в школы и сады. Как проходит спектакль, площадки, контакты.">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="assets/css/site.css">
@@ -26,32 +26,26 @@
   </div>
 </nav>
 
-<header class="hero">
+<header class="page-hero t-violet">
   <div class="hero-grid">
     <div>
-      <span class="chip">Театр Владимира Злобина · Геленджик</span>
-      <h1>Куклы, которые <em>говорят</em> с вашим ребёнком</h1>
-      <p class="hero-sub">Живая музыка, ручные куклы и сказки, которые дети смотрят молча, а потом пересказывают неделю. Играем по субботам в 10:30 в Малом зале ДК им. Л. Плешкова — для зрителей от года.</p>
+      <div class="crumbs"><a href="index.html">Главная</a> · <span>О театре</span></div>
+      <h1>Театр, <br>который едет <br>к зрителю</h1>
+      <p>Маленький театрик кукол — театр Владимира Злобина в Геленджике. У нас нет своего здания: ширму, свет, кукол и инструменты мы привозим туда, где нас ждут, — в Малый зал ДК, на детскую площадку, в школу или сад.</p>
+      <div class="hero-facts">
+        <span>14 спектаклей в афише</span>
+        <span>для зрителей от года</span>
+        <span>живая музыка, без микрофона</span>
+      </div>
       <div class="hero-cta">
-        <a class="btn btn-yellow" href="#afisha">Смотреть афишу</a>
-        <a class="btn btn-ghost" href="#about">Про театр</a>
-        <div class="seal" style="--seal:118px;margin-left:auto">
-          <svg viewBox="0 0 124 124" role="img" aria-label="Для зрителей от года">
-            <circle cx="62" cy="62" r="60" fill="#FFD23F"></circle>
-            <circle cx="62" cy="62" r="50" fill="none" stroke="#241046" stroke-width="1.5" stroke-dasharray="3 5" opacity=".5"></circle>
-            <path id="sealRing1" d="M62,62 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0" fill="none"></path>
-            <text class="seal-ring" fill="#241046"><textPath href="#sealRing1" startOffset="2%">живая музыка · ручные куклы · сказка ·</textPath></text>
-            <text class="seal-mid" x="62" y="66" fill="#241046">1+</text>
-            <text class="seal-sub" x="62" y="80" fill="#241046">от года</text>
-          </svg>
-        </div>
+        <a class="btn btn-yellow" href="afisha.html">Что мы играем</a>
+        <a class="btn btn-ghost" href="aktery.html">Наши актёры</a>
       </div>
     </div>
-    <div class="hero-art">
-      <div class="mascot hero-mascot" id="heroMascot"><span class="mascot-tag">3D-маскот<br>ближайшего спектакля</span></div>
+    <div class="hero-art" style="min-height:300px">
+      <div class="mascot hero-mascot"><span class="mascot-tag">3D-маскот<br>театра</span></div>
       <div class="say say-yellow say-bl" style="left:-14px;top:10px">Музыку играем вживую — без фонограммы</div>
-      <div class="say say-mint say-br" style="right:-8px;top:104px">Играем без микрофона</div>
-      <div class="ticket" id="heroTicket"></div>
+      <div class="say say-mint say-br" style="right:-8px;bottom:-6px">Кукол делаем сами</div>
     </div>
   </div>
 </header>
@@ -70,58 +64,17 @@
   </svg>
 </div>
 
-<section id="afisha">
-  <div class="wrap">
-    <div class="sec-head">
-      <div>
-        <span class="eyebrow">Что играем</span>
-        <h2>Афиша</h2>
-      </div>
-      <a class="btn btn-sm btn-line" href="afisha.html">Вся афиша</a>
-    </div>
-    <div class="cards" id="afishaCards"></div>
-    <noscript><p class="sec-note" style="margin-top:20px">Афиша подгружается скриптом. Включите JavaScript или позвоните: +7 912 337-41-97.</p></noscript>
-  </div>
-</section>
-
-<section id="schedule" style="padding-top:0">
-  <div class="wrap">
-    <div class="sec-head">
-      <div>
-        <span class="eyebrow">Когда прийти</span>
-        <h2>Ближайшие показы</h2>
-      </div>
-      <a class="btn btn-sm btn-line" href="raspisanie.html">Всё расписание</a>
-    </div>
-    <div class="sched" id="schedList"></div>
-  </div>
-</section>
-
-<!-- жёлтая лента: объём и перехлёст строит assets/js/ribbon.js -->
-<div class="ribbon ribbon-titles" data-ribbon data-phrase="Красная шапочка · Айболит · Журавлиные перья · Колобок · Гуси-лебеди · Цветик-семицветик · Улитка и кит · Федорино горе" aria-hidden="true">
-  <svg viewBox="0 0 1200 420" role="presentation">
-    <defs>
-      <path id="ribbonPath3" d="M -100 396 C 70 386, 152 300, 270 248 C 382 198, 472 244, 592 268 C 702 290, 792 268, 882 218 C 972 168, 1064 134, 1310 156"></path>
-    </defs>
-    <g class="ribbon-fallback">
-      <use href="#ribbonPath3" class="band-edge"></use>
-      <use href="#ribbonPath3" class="band"></use>
-    </g>
-    <text><textPath href="#ribbonPath3" startOffset="0">Красная шапочка · Айболит · Журавлиные перья · Колобок · Гуси-лебеди · Цветик-семицветик · Улитка и кит · Федорино горе</textPath></text>
-  </svg>
-</div>
-
 <section id="about">
   <div class="about">
     <div class="about-grid">
       <div>
-        <span class="chip">О театре</span>
+        <span class="chip">Как мы устроены</span>
         <h2 style="margin-top:18px">У нас нет своего здания — зато есть свой зритель</h2>
         <p>Мы играем в Малом зале ДК им. Плешкова, на детской площадке «Город сказок», в школах и садах Геленджика. Привозим ширму, свет, кукол и инструменты — и собираем театр там, где нас ждут.</p>
-        <p>Музыку играют те же люди, что ведут кукол: никакой фонограммы и никаких микрофонов. Перед началом — творческая пятиминутка: желающие дети выходят со стихами и песнями. После спектакля куклы остаются на сцене: можно подойти, потрогать и сфотографироваться. Бесплатно.</p>
+        <p>Музыку играют те же люди, что ведут кукол: никакой фонограммы. Инструменты стоят прямо на сцене, микрофонов нет — дети не пугаются громкого звука.</p>
+        <p>Перед началом проходит творческая пятиминутка: желающие дети выходят со стихами и песнями. После спектакля куклы остаются на сцене — можно подойти, рассмотреть их вблизи, потрогать и сфотографироваться. Бесплатно.</p>
         <div class="hero-cta">
-          <a class="btn btn-yellow" href="o-teatre.html">Подробнее о театре</a>
-          <a class="btn btn-ghost" href="aktery.html">Познакомиться с актёрами</a>
+          <a class="btn btn-yellow" href="raspisanie.html">Ближайшие показы</a>
         </div>
       </div>
       <div class="collage">
@@ -148,20 +101,6 @@
     </div>
   </div>
 </section>
-
-<!-- жёлтая лента: объём и перехлёст строит assets/js/ribbon.js -->
-<div class="ribbon ribbon-mid" data-ribbon data-phrase="живая музыка · ручные куклы · без микрофона" aria-hidden="true">
-  <svg viewBox="0 0 1200 420" role="presentation">
-    <defs>
-      <path id="ribbonPath2" d="M -100 214 C 70 148, 222 116, 392 172 C 520 214, 606 288, 744 278 C 854 270, 920 172, 846 118 C 770 62, 680 146, 748 226 C 824 314, 970 324, 1096 256 C 1182 210, 1242 186, 1310 212"></path>
-    </defs>
-    <g class="ribbon-fallback">
-      <use href="#ribbonPath2" class="band-edge"></use>
-      <use href="#ribbonPath2" class="band"></use>
-    </g>
-    <text><textPath href="#ribbonPath2" startOffset="0">живая музыка · ручные куклы · без микрофона</textPath></text>
-  </svg>
-</div>
 
 <section id="how">
   <div class="wrap">
@@ -217,52 +156,58 @@
   </div>
 </section>
 
-<section id="order" style="padding-top:0">
+<section id="venues" style="padding-top:0">
   <div class="wrap">
     <div class="sec-head">
       <div>
-        <span class="eyebrow">Выездной спектакль</span>
-        <h2>Позвать театр <br>к себе</h2>
+        <span class="eyebrow">Где мы играем</span>
+        <h2>Три адреса</h2>
       </div>
-      <p class="sec-note">В детский сад, школу, на праздник двора. Отдельный зал не нужен — хватит просторной комнаты.</p>
+      <p class="sec-note">Театр собирается за час до спектакля и разбирается после поклона.</p>
     </div>
-    <div class="steps">
-      <article class="step">
-        <span class="no">01</span>
-        <h3>Звоните</h3>
-        <p>Светлана: +7 912 337-41-97. Скажите возраст детей и сколько их будет — подберём спектакль, который досмотрят до конца.</p>
+    <div class="venues">
+      <article class="venue">
+        <span class="pin">основная сцена</span>
+        <h3>ДК им. Л. Плешкова, Малый зал</h3>
+        <p>Геленджикский проспект, 95. Субботние показы в 10:30 и вечерние спектакли, касса с бумажными билетами.</p>
       </article>
-      <article class="step">
-        <span class="no">02</span>
-        <h3>Согласуем дату</h3>
-        <p>Договариваемся о дне и времени. Утренние показы обычно для садов, дневные и вечерние — для школ и семей.</p>
+      <article class="venue">
+        <span class="pin">летом</span>
+        <h3>Площадка «Город сказок»</h3>
+        <p>Открытая детская площадка. Играем в курортный сезон, в том числе бесплатные показы на открытии сезона.</p>
       </article>
-      <article class="step">
-        <span class="no">03</span>
-        <h3>Привозим своё</h3>
-        <p>Ширма, свет, куклы, инструменты и реквизит — всё наше. От вас только помещение.</p>
+      <article class="venue">
+        <span class="pin">по заявке</span>
+        <h3>Школы и детские сады</h3>
+        <p>Выездные показы по всему городу: от вас помещение, от нас — ширма, свет, куклы и музыка. Договориться можно со Светланой по телефону.</p>
       </article>
-      <article class="step">
-        <span class="no">04</span>
-        <h3>Играем и остаёмся</h3>
-        <p>После поклона куклы остаются на сцене: дети подходят, трогают и фотографируются.</p>
-      </article>
-    </div>
-    <div class="hero-cta" style="margin-top:8px">
-      <a class="btn btn-violet btn-lg" href="tel:+79123374197">+7 912 337-41-97</a>
-      <a class="btn btn-line btn-lg" href="#contacts">Все контакты</a>
     </div>
   </div>
 </section>
 
-<section id="troupe">
+
+<!-- жёлтая лента: объём и перехлёст строит assets/js/ribbon.js -->
+<div class="ribbon ribbon-mid" data-ribbon data-phrase="куклу можно потрогать после поклона" aria-hidden="true">
+  <svg viewBox="0 0 1200 420" role="presentation">
+    <defs>
+      <path id="ribbonPath2" d="M -100 214 C 70 148, 222 116, 392 172 C 520 214, 606 288, 744 278 C 854 270, 920 172, 846 118 C 770 62, 680 146, 748 226 C 824 314, 970 324, 1096 256 C 1182 210, 1242 186, 1310 212"></path>
+    </defs>
+    <g class="ribbon-fallback">
+      <use href="#ribbonPath2" class="band-edge"></use>
+      <use href="#ribbonPath2" class="band"></use>
+    </g>
+    <text><textPath href="#ribbonPath2" startOffset="0">куклу можно потрогать после поклона</textPath></text>
+  </svg>
+</div>
+
+<section id="troupe" style="padding-top:0">
   <div class="wrap">
     <div class="sec-head">
       <div>
         <span class="eyebrow">Кто играет</span>
         <h2>Наши актёры</h2>
       </div>
-      <p class="sec-note">Каждая ведёт по три-четыре куклы за спектакль и играет на инструментах вживую.</p>
+      <p class="sec-note">Весь театр — это четыре человека. Каждая ведёт по три-четыре куклы за спектакль и играет на инструментах вживую.</p>
     </div>
     <div class="troupe">
       <a class="actor" href="aktery.html">
@@ -289,6 +234,40 @@
     </div>
     <div class="hero-cta" style="margin-top:28px">
       <a class="btn btn-violet" href="aktery.html">Все актёры</a>
+    </div>
+  </div>
+</section>
+
+<section id="order" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">Выездной спектакль</span>
+        <h2>Позвать театр <br>к себе</h2>
+      </div>
+      <p class="sec-note">В детский сад, школу, на праздник двора. Отдельный зал не нужен — хватит просторной комнаты.</p>
+    </div>
+    <div class="steps">
+      <article class="step">
+        <span class="no">01</span>
+        <h3>Звоните</h3>
+        <p>Светлана: +7 912 337-41-97. Скажите возраст детей и сколько их будет — подберём спектакль, который досмотрят до конца.</p>
+      </article>
+      <article class="step">
+        <span class="no">02</span>
+        <h3>Согласуем дату</h3>
+        <p>Утренние показы обычно для садов, дневные и вечерние — для школ и семей.</p>
+      </article>
+      <article class="step">
+        <span class="no">03</span>
+        <h3>Привозим своё</h3>
+        <p>Ширма, свет, куклы, инструменты и реквизит — всё наше. От вас только помещение.</p>
+      </article>
+      <article class="step">
+        <span class="no">04</span>
+        <h3>Играем и остаёмся</h3>
+        <p>После поклона куклы остаются на сцене: дети подходят, трогают и фотографируются.</p>
+      </article>
     </div>
   </div>
 </section>
@@ -361,14 +340,14 @@
       </div>
       <div class="c-card">
         <h3>Соцсети</h3>
-        <a href="https://vk.com/smallteatrik" target="_blank" rel="noopener">ВКонтакте — афиша</a>
-        <a href="#contacts">Telegram</a>
+        <a href="https://vk.com/smallteatrik" target="_blank" rel="noopener">ВКонтакте</a>
+        <a href="#contacts">Telegram — афиша</a>
         <p class="plain" style="margin-top:10px">Заказать спектакль в сад или школу — по телефону.</p>
       </div>
     </div>
     <div class="c-cta">
       <a class="btn btn-yellow" href="https://gelendzhik.kassy.ru/events/detskie/" target="_blank" rel="noopener">Купить билет</a>
-      <a class="btn btn-ghost" href="#contacts">Подписаться на афишу</a>
+      <a class="btn btn-ghost" href="raspisanie.html">Расписание</a>
     </div>
   </div>
 </section>
@@ -379,42 +358,6 @@
   Театр Владимира Злобина · Геленджик · <a href="admin.html">админка</a>
 </footer>
 
-<script src="assets/js/store.js"></script>
-<script src="assets/js/render.js"></script>
 <script src="assets/js/ribbon.js" defer></script>
-<script>
-(function(){
-  'use strict';
-  var esc = TEATR.escapeHtml;
-
-  /* ── карточки афиши: на главной — первые шесть ── */
-  var shows = TEATR.published();
-  document.getElementById('afishaCards').innerHTML = shows.slice(0, 6).map(TEATR.cardHtml).join('');
-
-  /* ── расписание: ближайшие показы, остальное — на странице расписания ── */
-  var upcoming = TEATR.upcoming();
-  var schedEl = document.getElementById('schedList');
-  if (upcoming.length) {
-    schedEl.innerHTML = upcoming.slice(0, 4).map(TEATR.schedRowHtml).join('');
-  } else {
-    schedEl.innerHTML = '<div class="sched-empty">Ближайшие даты уточняются. Позвоните — скажем, когда играем: <a href="tel:+79123374197" style="text-decoration:underline">+7 912 337-41-97</a>.</div>';
-  }
-
-  /* ── билет ближайшего спектакля в герое ── */
-  var n = TEATR.next();
-  if (n) {
-    var when = n.date ? TEATR.formatDate(n.date) : 'дата уточняется';
-    document.getElementById('heroTicket').innerHTML = '' +
-      '<span class="eyebrow">Ближайший</span>' +
-      '<b><a href="spektakl.html?id=' + encodeURIComponent(n.id) + '">' + esc(n.title) + '</a></b>' +
-      '<small>' + esc(when) + '</small>' +
-      '<small>' + esc(n.venue) + '</small>' +
-      '<span class="price">' + esc(n.price) + ' ₽ · ' + esc(n.age) + '</span>';
-    document.getElementById('heroMascot').innerHTML = n.mascot
-      ? '<img src="' + esc(n.mascot) + '" alt="Маскот спектакля «' + esc(n.title) + '»">'
-      : '<span class="mascot-tag">3D-маскот<br>«' + esc(n.title) + '»</span>';
-  }
-})();
-</script>
 </body>
 </html>

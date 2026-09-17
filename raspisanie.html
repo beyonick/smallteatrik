@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Расписание — Маленький театрик кукол, Геленджик</title>
+<meta name="description" content="Расписание спектаклей Маленького театрика кукол в Геленджике: ближайшие показы в ДК им. Плешкова и на площадке «Город сказок», время, цены и билеты.">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/blocks.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="brand" href="index.html">Маленький театрик кукол<span>Геленджик</span></a>
+    <div class="nav-links">
+      <a href="afisha.html">Афиша</a>
+      <a href="raspisanie.html">Расписание</a>
+      <a href="o-teatre.html">О театре</a>
+      <a href="aktery.html">Актёры</a>
+      <a href="o-teatre.html#contacts">Контакты</a>
+    </div>
+    <a class="btn btn-orange btn-sm" href="https://gelendzhik.kassy.ru/events/detskie/" target="_blank" rel="noopener">Купить билет</a>
+  </div>
+</nav>
+
+<header class="page-hero t-mint">
+  <div class="hero-grid">
+    <div>
+      <div class="crumbs"><a href="index.html">Главная</a> · <span>Расписание</span></div>
+      <h1>Когда прийти</h1>
+      <p>Играем по субботам в 10:30 в Малом зале ДК им. Л. Плешкова. Даты добавляются по мере согласования зала, билеты — на kassy.ru или в кассе ДК. Выездные спектакли в сады и школы идут по договорённости и в расписание не попадают.</p>
+      <div class="hero-facts">
+        <span id="factNext">ближайший показ уточняется</span>
+        <span>по субботам в 10:30</span>
+        <span>ДК им. Плешкова</span>
+      </div>
+      <div class="hero-cta">
+        <a class="btn btn-violet" href="afisha.html">Вся афиша</a>
+        <a class="btn btn-line" href="tel:+79123374197">+7 912 337-41-97</a>
+      </div>
+    </div>
+    <div class="hero-art" style="min-height:300px">
+      <div class="mascot hero-mascot" id="heroMascot"><span class="mascot-tag">3D-маскот<br>ближайшего спектакля</span></div>
+      <div class="ticket" id="heroTicket"></div>
+    </div>
+  </div>
+</header>
+
+<!-- жёлтая лента: объём и перехлёст строит assets/js/ribbon.js -->
+<div class="ribbon" data-ribbon data-phrase="театрик для всей семьи" aria-hidden="true">
+  <svg viewBox="0 0 1200 420" role="presentation">
+    <defs>
+      <path id="ribbonPath" d="M -100 384 C 90 402, 192 346, 300 274 C 396 210, 470 144, 598 156 C 720 168, 764 264, 890 258 C 1002 252, 1072 148, 1182 86 C 1238 54, 1272 42, 1310 32"></path>
+    </defs>
+    <g class="ribbon-fallback">
+      <use href="#ribbonPath" class="band-edge"></use>
+      <use href="#ribbonPath" class="band"></use>
+    </g>
+    <text><textPath href="#ribbonPath" startOffset="0">театрик для всей семьи</textPath></text>
+  </svg>
+</div>
+
+<section id="schedule">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">Ближайшие показы</span>
+        <h2>Расписание</h2>
+      </div>
+      <p class="sec-note">Детям до года — бесплатно, на руках у родителей. Приходите заранее: перед спектаклем проходит творческая пятиминутка, дети читают стихи и поют.</p>
+    </div>
+    <div id="schedList"></div>
+    <noscript><p class="sec-note" style="margin-top:20px">Расписание подгружается скриптом. Включите JavaScript или позвоните: +7 912 337-41-97.</p></noscript>
+  </div>
+</section>
+
+<section id="venues" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">Где нас искать</span>
+        <h2>Площадки</h2>
+      </div>
+      <p class="sec-note">Своего здания у театра нет: ширму, свет, кукол и инструменты мы привозим с собой.</p>
+    </div>
+    <div class="venues">
+      <article class="venue">
+        <span class="pin">основная сцена</span>
+        <h3>ДК им. Л. Плешкова, Малый зал</h3>
+        <p>Геленджикский проспект, 95. Субботние показы в 10:30 и вечерние спектакли, здесь же касса с бумажными билетами.</p>
+      </article>
+      <article class="venue">
+        <span class="pin">летом</span>
+        <h3>Площадка «Город сказок»</h3>
+        <p>Открытая детская площадка. Играем в курортный сезон — в том числе бесплатные показы на открытии сезона и на фестивалях.</p>
+      </article>
+      <article class="venue">
+        <span class="pin">по заявке</span>
+        <h3>Школы и детские сады</h3>
+        <p>Выездные показы по всему Геленджику: недавно были в детском саду «Маленькая страна» с «Гуси-лебеди». В расписание не попадают — дату согласуем по телефону.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div class="tape-wrap"><div class="tape" aria-hidden="true">
+  <div class="tape-track">
+    <span>живая музыка · ручные куклы · от 1 года · фото с куклами бесплатно · сцена с собой ·&nbsp;</span>
+    <span>живая музыка · ручные куклы · от 1 года · фото с куклами бесплатно · сцена с собой ·&nbsp;</span>
+  </div>
+</div></div>
+
+<section id="faq" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">Перед походом</span>
+        <h2>Про билеты <br>и показы</h2>
+      </div>
+    </div>
+    <div class="faq">
+      <details open>
+        <summary>Где купить билет?</summary>
+        <div class="answer">
+          <p>На kassy.ru по кнопке «Купить билет» или в кассе ДК им. Плешкова. 800 ₽ на субботние спектакли, 1000 ₽ на вечерние «Журавлиные перья». Билет нужен и взрослому, и ребёнку от года.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Почему в расписании не все спектакли?</summary>
+        <div class="answer">
+          <p>Дата появляется, когда согласован зал. Остальные спектакли из репертуара играем по заявкам — в саду, школе или на празднике. Позвоните, и мы поставим показ.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Нужен ли билет малышу?</summary>
+        <div class="answer">
+          <p>Детям до года — бесплатно, они смотрят у родителей на руках. С года билет покупается и на ребёнка, и на взрослого: место в зале занимает каждый зритель.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Сколько длится спектакль?</summary>
+        <div class="answer">
+          <p>Субботние — 35–40 минут без антракта, вечерние «Журавлиные перья» — 55 минут. После поклона куклы остаются на сцене: на фотографии закладывайте ещё минут пятнадцать.</p>
+        </div>
+      </details>
+      <details>
+        <summary>Как узнать о новых датах?</summary>
+        <div class="answer">
+          <p>Афишу на месяц публикуем <a href="https://vk.com/smallteatrik" target="_blank" rel="noopener" style="text-decoration:underline">во ВКонтакте</a> и обновляем эту страницу. Самый быстрый способ — позвонить: +7 912 337-41-97.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="contacts">
+  <div class="contacts">
+    <span class="chip">Не нашли подходящую дату?</span>
+    <h2 style="margin-top:18px">Позвоните — <br>поставим показ</h2>
+    <div class="c-cta">
+      <a class="btn btn-white" href="tel:+79123374197">+7 912 337-41-97</a>
+      <a class="btn btn-ghost" href="o-teatre.html#contacts">Все контакты</a>
+    </div>
+  </div>
+</section>
+
+<div class="wordmark" aria-hidden="true"><div>маленький театрик кукол</div></div>
+
+<footer>
+  Театр Владимира Злобина · Геленджик · <a href="admin.html">админка</a>
+</footer>
+
+<script src="assets/js/store.js"></script>
+<script src="assets/js/render.js"></script>
+<script src="assets/js/ribbon.js" defer></script>
+<script>
+(function(){
+  'use strict';
+  var esc = TEATR.escapeHtml;
+
+  /* ── показы, сгруппированные по месяцам ── */
+  var upcoming = TEATR.upcoming();
+  var list = document.getElementById('schedList');
+
+  if (upcoming.length) {
+    var html = '';
+    var month = '';
+    upcoming.forEach(function(s){
+      var title = TEATR.monthTitle(s.date);
+      if (title !== month) {
+        month = title;
+        var count = upcoming.filter(function(x){ return TEATR.monthTitle(x.date) === title; }).length;
+        html += '<div class="month"><h3>' + esc(month) + '</h3><i></i><b>' + count + ' ' + TEATR.plural(count, ['показ', 'показа', 'показов']) + '</b></div>';
+        html += '<div class="sched">' ;
+      }
+      html += TEATR.schedRowHtml(s);
+      var next = upcoming[upcoming.indexOf(s) + 1];
+      if (!next || TEATR.monthTitle(next.date) !== month) html += '</div>';
+    });
+    list.innerHTML = html;
+  } else {
+    list.innerHTML = '<div class="sched-empty">Ближайшие даты уточняются. Позвоните — скажем, когда играем: <a href="tel:+79123374197" style="text-decoration:underline">+7 912 337-41-97</a>.</div>';
+  }
+
+  /* ── ближайший показ: билет и маскот в шапке ── */
+  var n = upcoming[0] || TEATR.next();
+  if (n) {
+    if (n.date) {
+      document.getElementById('factNext').textContent = 'ближайший показ — ' + TEATR.formatShort(n.date);
+    }
+    var when = n.date ? TEATR.formatDate(n.date) : 'дата уточняется';
+    document.getElementById('heroTicket').innerHTML = '' +
+      '<span class="eyebrow">Ближайший</span>' +
+      '<b><a href="spektakl.html?id=' + encodeURIComponent(n.id) + '">' + esc(n.title) + '</a></b>' +
+      '<small>' + esc(when) + '</small>' +
+      '<small>' + esc(n.venue) + '</small>' +
+      '<span class="price">' + esc(n.price) + ' ₽ · ' + esc(n.age) + '</span>';
+    document.getElementById('heroMascot').innerHTML = n.mascot
+      ? '<img src="' + esc(n.mascot) + '" alt="Маскот спектакля «' + esc(n.title) + '»">'
+      : '<span class="mascot-tag">3D-маскот<br>«' + esc(n.title) + '»</span>';
+  }
+})();
+</script>
+</body>
+</html>

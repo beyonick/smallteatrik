@@ -4,6 +4,14 @@
    3D-маскоты, яркая палитра.
    ─────────────────────────────────────────────── */
 
+/* ── дисплейный шрифт ── */
+@font-face{
+  font-family:"ST Izhora";
+  src:url("../fonts/ST-Izhora-free.woff2") format("woff2"),
+      url("../fonts/ST-Izhora-free.otf") format("opentype");
+  font-weight:400;font-style:normal;font-display:swap;
+}
+
 :root{
   --violet:#6A34D6;
   --violet-d:#3F1A8C;
@@ -19,7 +27,7 @@
   --ink-2:#5A4478;
   --white:#FFFFFF;
 
-  --disp:"Unbounded","Trebuchet MS",system-ui,sans-serif;
+  --disp:"ST Izhora","Trebuchet MS",system-ui,sans-serif;
   --sans:"Onest","Segoe UI",system-ui,sans-serif;
 
   --r-l:40px; --r-m:28px; --r-s:18px;
@@ -28,6 +36,7 @@
 }
 
 *{box-sizing:border-box}
+html{font-synthesis-weight:none}
 html{scroll-behavior:smooth}
 body{
   margin:0;background:var(--cream);color:var(--ink);
@@ -82,7 +91,8 @@ section{padding-block:clamp(56px,7vw,110px)}
 /* ── герой ── */
 .hero{
   background:var(--violet);color:var(--white);border-radius:var(--r-l);margin-inline:20px;
-  padding:clamp(34px,5vw,64px);position:relative;overflow:hidden;
+  padding:clamp(34px,5vw,64px);
+  position:relative;overflow:hidden;
 }
 .hero::after{
   content:"";position:absolute;right:-120px;top:-140px;width:420px;height:420px;border-radius:50%;
@@ -117,13 +127,45 @@ section{padding-block:clamp(56px,7vw,110px)}
 .ticket small{color:var(--ink-2);font-size:13px;display:block}
 .ticket .price{margin-top:12px;display:inline-block;background:var(--mint);border-radius:999px;padding:6px 14px;font-weight:700;font-size:14px}
 
-/* ── волнистая лента ── */
-.ribbon{margin-block:clamp(10px,3vw,30px) 0;overflow:hidden;display:flex;justify-content:center}
-.ribbon svg{display:block;width:100%;height:auto;min-width:760px}
+/* ── жёлтая лента ──
+   Лента заходит на соседние блоки: отрицательные отступы плюс свой слой.
+   Форму рисует assets/js/ribbon.js заливкой с переменной шириной,
+   .ribbon-fallback — простая обводка на случай, если скрипт не отработал. */
+.ribbon{
+  position:relative;z-index:5;overflow:hidden;display:flex;justify-content:center;
+  margin-top:clamp(-280px,-17vw,-110px);margin-bottom:clamp(-140px,-7vw,-46px);
+  pointer-events:none;
+}
+.ribbon-mid{margin-top:clamp(-250px,-15vw,-96px);margin-bottom:clamp(-110px,-6vw,-34px)}
+/* лента с названиями: сверху почти не заходит, снизу ложится на блок */
+.ribbon-titles{margin-top:clamp(-150px,-8vw,-44px);margin-bottom:clamp(-230px,-13vw,-90px)}
+.ribbon svg{
+  display:block;width:100%;height:auto;min-width:900px;
+  animation:ribbonfloat 11s ease-in-out infinite alternate;
+}
+.ribbon-mid svg{animation-duration:13s;animation-delay:-4s}
+.ribbon-titles svg{animation-duration:9.5s;animation-delay:-2s}
+@keyframes ribbonfloat{
+  from{transform:translateY(-5px) rotate(-.25deg)}
+  to{transform:translateY(5px) rotate(.25deg)}
+}
 .ribbon-scroll{overflow-x:hidden}
-.ribbon .band{fill:none;stroke:var(--yellow);stroke-width:62;stroke-linecap:round}
-.ribbon .band-edge{fill:none;stroke:var(--ink);stroke-width:66;stroke-linecap:round;opacity:.1}
-.ribbon text{font-family:var(--disp);font-weight:700;font-size:21px;fill:var(--ink);letter-spacing:.01em}
+
+/* тело ленты */
+.ribbon .band-fill{fill:var(--yellow)}
+.ribbon .band-under{fill:var(--ink);opacity:.13;transform:translate(0,5px)}
+.ribbon .band-shade{fill:var(--ink);opacity:.22;filter:blur(7px);transform:translate(-2px,7px)}
+/* нить, идущая поверх, — чуть темнее: видно изнанку ленты */
+.ribbon-over .band-fill{fill:#F6C838}
+
+/* запасной вариант без скрипта */
+.ribbon .band{fill:none;stroke:var(--yellow);stroke-width:38;stroke-linecap:round}
+.ribbon .band-edge{fill:none;stroke:var(--ink);stroke-width:44;stroke-linecap:round;opacity:.12}
+
+.ribbon text{
+  font-family:var(--disp);font-weight:700;font-size:20px;fill:var(--ink);letter-spacing:.01em;
+  dominant-baseline:central;alignment-baseline:central; /* строго по центру линии */
+}
 
 /* ── карточки афиши ── */
 .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}

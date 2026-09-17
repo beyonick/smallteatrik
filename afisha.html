@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Афиша — Маленький театрик кукол, Геленджик</title>
+<meta name="description" content="Все спектакли Маленького театрика кукол в Геленджике: русские и японские сказки, музыкальные интерактивы для зрителей от года. Возраст, продолжительность, цена билета.">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="assets/css/site.css">
+<link rel="stylesheet" href="assets/css/blocks.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-in">
+    <a class="brand" href="index.html">Маленький театрик кукол<span>Геленджик</span></a>
+    <div class="nav-links">
+      <a href="afisha.html">Афиша</a>
+      <a href="raspisanie.html">Расписание</a>
+      <a href="o-teatre.html">О театре</a>
+      <a href="aktery.html">Актёры</a>
+      <a href="o-teatre.html#contacts">Контакты</a>
+    </div>
+    <a class="btn btn-orange btn-sm" href="https://gelendzhik.kassy.ru/events/detskie/" target="_blank" rel="noopener">Купить билет</a>
+  </div>
+</nav>
+
+<header class="page-hero t-pink">
+  <div class="hero-grid">
+    <div>
+      <div class="crumbs"><a href="index.html">Главная</a> · <span>Афиша</span></div>
+      <h1>Что мы играем</h1>
+      <p>Русские и японские сказки, Чуковский и Маршак, Дональдсон и Паустовский, музыкальные интерактивы для самых маленьких. Играем по субботам в 10:30 в Малом зале ДК им. Л. Плешкова — с живой музыкой, без микрофона и с куклами, которых можно потрогать после поклона.</p>
+      <div class="hero-facts">
+        <span id="factCount">спектакли в афише</span>
+        <span>от 1 года</span>
+        <span>по субботам в 10:30</span>
+        <span>35–40 минут</span>
+        <span>800 ₽</span>
+      </div>
+      <div class="hero-cta">
+        <a class="btn btn-violet" href="raspisanie.html">Когда ближайший показ</a>
+        <a class="btn btn-line" href="#vyezd">Позвать в сад или школу</a>
+      </div>
+    </div>
+    <div class="hero-art" style="min-height:300px">
+      <div class="mascot hero-mascot" id="heroMascot"><span class="mascot-tag">3D-маскот<br>ближайшего спектакля</span></div>
+      <div class="say say-mint say-br" style="right:-8px;top:14px">Кукол делаем сами</div>
+    </div>
+  </div>
+</header>
+
+<!-- жёлтая лента: объём и перехлёст строит assets/js/ribbon.js -->
+<div class="ribbon" data-ribbon data-phrase="театрик для всей семьи" aria-hidden="true">
+  <svg viewBox="0 0 1200 420" role="presentation">
+    <defs>
+      <path id="ribbonPath" d="M -100 384 C 90 402, 192 346, 300 274 C 396 210, 470 144, 598 156 C 720 168, 764 264, 890 258 C 1002 252, 1072 148, 1182 86 C 1238 54, 1272 42, 1310 32"></path>
+    </defs>
+    <g class="ribbon-fallback">
+      <use href="#ribbonPath" class="band-edge"></use>
+      <use href="#ribbonPath" class="band"></use>
+    </g>
+    <text><textPath href="#ribbonPath" startOffset="0">театрик для всей семьи</textPath></text>
+  </svg>
+</div>
+
+<section id="repertuar">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">Репертуар</span>
+        <h2>Все спектакли</h2>
+      </div>
+      <p class="sec-note">Афиша на месяц выходит во ВКонтакте: спектакли чередуются по субботам. У спектаклей с датой билеты уже в продаже, остальные играем по заявкам — в зале, школе или саду.</p>
+    </div>
+
+    <div class="filters" id="filters" role="group" aria-label="Фильтр афиши">
+      <button type="button" data-filter="all" aria-pressed="true">Все спектакли</button>
+      <button type="button" data-filter="1+" aria-pressed="false">Для самых маленьких · 1+</button>
+      <button type="button" data-filter="2+" aria-pressed="false">2+</button>
+      <button type="button" data-filter="6+" aria-pressed="false">6+</button>
+      <button type="button" data-filter="dated" aria-pressed="false">С датой показа</button>
+    </div>
+
+    <div class="cards" id="afishaCards"></div>
+    <div class="filters-empty" id="filtersEmpty" hidden>В этой подборке пока пусто. Посмотрите все спектакли или позвоните: <a href="tel:+79123374197" style="text-decoration:underline">+7 912 337-41-97</a>.</div>
+    <noscript><p class="sec-note" style="margin-top:20px">Афиша подгружается скриптом. Включите JavaScript или позвоните: +7 912 337-41-97.</p></noscript>
+  </div>
+</section>
+
+<section id="kak-vybrat" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">Как выбрать</span>
+        <h2>Какой спектакль <br>взять первым</h2>
+      </div>
+      <p class="sec-note">Если сомневаетесь — позвоните. Скажете возраст ребёнка, подберём то, что досмотрят до конца.</p>
+    </div>
+    <div class="notes">
+      <article class="note">
+        <b>1–3 года</b>
+        <span>«Колобок» и «Сказочка про козявочку»: знакомый сюжет, песенки, 35 минут. Следить за историей не нужно — можно просто смотреть на кукол.</span>
+      </article>
+      <article class="note">
+        <b>4–6 лет</b>
+        <span>«Гуси-лебеди», «Улитка и кит», «Федорино горе»: сказка с поворотом сюжета, игры с залом и музыканты прямо на сцене.</span>
+      </article>
+      <article class="note">
+        <b>от 6 лет</b>
+        <span>«Журавлиные перья» и «Солдатская сказка»: истории о выборе и о войне, после которых дети задают вопросы и рисуют рисунки.</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div class="tape-wrap"><div class="tape" aria-hidden="true">
+  <div class="tape-track">
+    <span>Колобок · Гуси-лебеди · Цветик-семицветик · Улитка и кит · Федорино горе · Красная шапочка · Айболит · Журавлиные перья ·&nbsp;</span>
+    <span>Колобок · Гуси-лебеди · Цветик-семицветик · Улитка и кит · Федорино горе · Красная шапочка · Айболит · Журавлиные перья ·&nbsp;</span>
+  </div>
+</div></div>
+
+<section id="vyezd" style="padding-top:0">
+  <div class="wrap">
+    <div class="sec-head">
+      <div>
+        <span class="eyebrow">Выездной спектакль</span>
+        <h2>Позвать театр <br>к себе</h2>
+      </div>
+      <p class="sec-note">Любой спектакль из афиши играем в детском саду, школе или на празднике двора. Отдельный зал не нужен — хватит просторной комнаты.</p>
+    </div>
+    <div class="steps">
+      <article class="step">
+        <span class="no">01</span>
+        <h3>Звоните</h3>
+        <p>Светлана: +7 912 337-41-97. Скажите возраст детей и сколько их будет — подберём спектакль, который досмотрят до конца.</p>
+      </article>
+      <article class="step">
+        <span class="no">02</span>
+        <h3>Согласуем дату</h3>
+        <p>Утренние показы обычно для садов, дневные и вечерние — для школ и семей.</p>
+      </article>
+      <article class="step">
+        <span class="no">03</span>
+        <h3>Привозим своё</h3>
+        <p>Ширма, свет, куклы, инструменты и реквизит — всё наше. От вас только помещение.</p>
+      </article>
+      <article class="step">
+        <span class="no">04</span>
+        <h3>Играем и остаёмся</h3>
+        <p>После поклона куклы остаются на сцене: дети подходят, трогают и фотографируются.</p>
+      </article>
+    </div>
+    <div class="hero-cta" style="margin-top:8px">
+      <a class="btn btn-violet btn-lg" href="tel:+79123374197">+7 912 337-41-97</a>
+      <a class="btn btn-line btn-lg" href="o-teatre.html#contacts">Все контакты</a>
+    </div>
+  </div>
+</section>
+
+<div class="wordmark" aria-hidden="true"><div>маленький театрик кукол</div></div>
+
+<footer>
+  Театр Владимира Злобина · Геленджик · <a href="admin.html">админка</a>
+</footer>
+
+<script src="assets/js/store.js"></script>
+<script src="assets/js/render.js"></script>
+<script src="assets/js/ribbon.js" defer></script>
+<script>
+(function(){
+  'use strict';
+  var esc = TEATR.escapeHtml;
+
+  var shows = TEATR.published();
+  var grid = document.getElementById('afishaCards');
+  grid.innerHTML = shows.map(TEATR.cardHtml).join('');
+
+  document.getElementById('factCount').textContent =
+    shows.length + ' ' + TEATR.plural(shows.length, ['спектакль', 'спектакля', 'спектаклей']) + ' в афише';
+
+  /* ── фильтры: возраст и наличие даты ── */
+  var empty = document.getElementById('filtersEmpty');
+  document.getElementById('filters').addEventListener('click', function(e){
+    var btn = e.target.closest('button[data-filter]');
+    if (!btn) return;
+    var f = btn.getAttribute('data-filter');
+    Array.prototype.forEach.call(this.querySelectorAll('button'), function(b){
+      b.setAttribute('aria-pressed', String(b === btn));
+    });
+    var shown = 0;
+    Array.prototype.forEach.call(grid.children, function(card){
+      var ok = f === 'all'
+        || (f === 'dated' ? card.hasAttribute('data-dated') : card.getAttribute('data-age') === f);
+      card.hidden = !ok;
+      if (ok) shown++;
+    });
+    empty.hidden = shown > 0;
+  });
+
+  /* ── маскот ближайшего спектакля в шапке ── */
+  var n = TEATR.next();
+  if (n) {
+    document.getElementById('heroMascot').innerHTML = n.mascot
+      ? '<img src="' + esc(n.mascot) + '" alt="Маскот спектакля «' + esc(n.title) + '»">'
+      : '<span class="mascot-tag">3D-маскот<br>«' + esc(n.title) + '»</span>';
+  }
+})();
+</script>
+</body>
+</html>

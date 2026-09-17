@@ -182,3 +182,88 @@
 @media(prefers-reduced-motion:reduce){
   .tape-track,.seal svg{animation:none}
 }
+
+/* ═══ шапки отдельных страниц: афиша, расписание, о театре ═══ */
+.page-hero{
+  border-radius:var(--r-l);margin-inline:20px;padding:clamp(34px,5vw,64px);
+  /* снизу запас: на блок заходит жёлтая лента */
+  padding-bottom:clamp(96px,11vw,170px);
+  position:relative;overflow:hidden;color:var(--ink);
+}
+.page-hero.t-yellow{background:var(--yellow)}
+.page-hero.t-pink{background:var(--pink)}
+.page-hero.t-mint{background:var(--mint)}
+.page-hero.t-violet{background:var(--violet);color:var(--white)}
+.page-hero h1{font-size:clamp(34px,5.2vw,76px);margin-block:18px 0;overflow-wrap:normal;hyphens:none}
+.page-hero p{margin-top:20px;max-width:52ch;font-size:clamp(16px,1.3vw,19px)}
+.page-hero .chip{background:rgba(36,16,70,.12);color:var(--ink)}
+.page-hero.t-violet .chip{background:rgba(255,255,255,.16);color:var(--white)}
+.page-hero .crumbs{color:rgba(36,16,70,.7)}
+.page-hero.t-violet .crumbs{color:rgba(255,255,255,.75)}
+.page-hero .hero-facts{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.page-hero .hero-facts span{background:rgba(255,255,255,.4);border-radius:999px;padding:9px 16px;font-size:14px;font-weight:700}
+.page-hero.t-violet .hero-facts span{background:rgba(255,255,255,.16)}
+
+/* ── фильтры афиши ── */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:26px}
+.filters button{
+  border:0;cursor:pointer;font-family:var(--sans);font-weight:700;font-size:14px;
+  padding:10px 18px;border-radius:999px;background:var(--white);color:var(--ink);
+  box-shadow:inset 0 0 0 2px rgba(36,16,70,.12);transition:background .18s,box-shadow .18s,transform .18s;
+}
+.filters button:hover{transform:translateY(-2px)}
+.filters button[aria-pressed="true"]{background:var(--ink);color:var(--white);box-shadow:none}
+.filters-empty{
+  background:var(--white);border-radius:26px;padding:26px;box-shadow:var(--shadow-card);
+  color:var(--ink-2);font-size:16px;
+}
+
+/* ── месяц в расписании ── */
+.month{display:flex;align-items:center;gap:16px;margin-block:34px 16px}
+.month:first-child{margin-top:0}
+.month h3{font-family:var(--disp);font-weight:900;font-size:clamp(20px,2.6vw,30px);white-space:nowrap}
+.month i{flex:1;height:3px;background:rgba(36,16,70,.12);border-radius:999px;font-style:normal}
+.month b{
+  background:var(--yellow);border-radius:999px;padding:6px 14px;
+  font-family:var(--sans);font-size:13px;font-weight:700;white-space:nowrap;
+}
+
+/* ── площадки ── */
+.venues{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.venue{
+  background:var(--white);border-radius:var(--r-m);padding:26px;box-shadow:var(--shadow-card);
+  display:flex;flex-direction:column;gap:12px;transition:transform .22s;
+}
+.venue:nth-child(odd){transform:rotate(-1.2deg)}
+.venue:nth-child(even){transform:rotate(1.2deg)}
+.venue:hover{transform:rotate(0deg) translateY(-5px)}
+.venue .pin{
+  align-self:flex-start;border-radius:999px;padding:6px 14px;font-size:12px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;background:var(--cream-2);
+}
+.venue:nth-child(1) .pin{background:var(--yellow)}
+.venue:nth-child(2) .pin{background:var(--mint)}
+.venue:nth-child(3) .pin{background:var(--cream-2)}
+.venue h3{font-size:21px;line-height:1.15}
+.venue p{font-size:15px;color:var(--ink-2);line-height:1.55}
+
+/* ── сводка «что нужно знать» ── */
+.notes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin-top:8px}
+.note{border-radius:var(--r-m);padding:24px;color:var(--white);display:flex;flex-direction:column;gap:10px}
+.note b{font-family:var(--disp);font-weight:900;font-size:26px;line-height:1}
+.note span{font-size:14px;line-height:1.5;opacity:.92}
+.note:nth-child(1){background:var(--violet)}
+.note:nth-child(2){background:var(--orange)}
+.note:nth-child(3){background:var(--mint);color:var(--ink)}
+
+@media(max-width:980px){
+  .venues,.notes{grid-template-columns:1fr 1fr}
+  .notes .note:nth-child(3){grid-column:span 2}
+}
+@media(max-width:620px){
+  .venues,.notes{grid-template-columns:1fr}
+  .notes .note:nth-child(3){grid-column:auto}
+  .venue{transform:none}
+  .page-hero{margin-inline:12px;border-radius:28px}
+  .month{gap:10px}
+}
