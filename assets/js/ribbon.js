@@ -3,8 +3,7 @@
 
    В разметке лежит только осевая линия (path в defs) и надпись по ней.
    Скрипт превращает ось в ленту постоянной ширины: считает нормали и строит
-   по ним залитый контур, находит самопересечение и прячет нижнюю нить
-   под верхнюю — маской.
+   по ним залитый контур. На самопересечении лента остаётся цельной.
    Надпись повторяется по всей длине и едет по кругу без шва.
 
    Без JS остаётся запасной вариант: обычная обводка из разметки.
@@ -15,10 +14,8 @@
   var SPEED = 34;      /* единиц пути в секунду */
   var STEP = 3;        /* шаг выборки вдоль оси */
   var HALF = 19;       /* половина ширины ленты — одинаковая по всей длине */
-  var OVER = 52;       /* половина длины верхней нити на пересечении */
 
   var SVGNS = 'http://www.w3.org/2000/svg';
-  var uid = 0;
 
   function el(name, attrs) {
     var node = document.createElementNS(SVGNS, name);
@@ -54,17 +51,6 @@
     return 'M' + left.join('L') + 'L' + right.reverse().join('L') + 'Z';
   }
 
-  /** Первое самопересечение оси: возвращает длины нижней и верхней нити. */
-  function crossing(pts) {
-    for (var i = 0; i < pts.length; i++) {
-      for (var j = i + Math.ceil(90 / STEP); j < pts.length; j++) {
-        var dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
-        if (dx * dx + dy * dy < 16) return { under: pts[i].s, over: pts[j].s };
-      }
-    }
-    return null;
-  }
-
   function build(box) {
     var svg = box.querySelector('svg');
     var path = box.querySelector('defs path');
@@ -76,41 +62,18 @@
     if (!len) return null;
 
     var pts = sample(path, len);
-    var cross = crossing(pts);
-    var id = 'ribbon-' + (++uid);
 
     var art = el('g', { 'class': 'ribbon-art' });
     var band = el('path', { 'class': 'band-fill', d: shape(pts, len, 0, len) });
     var under = el('path', { 'class': 'band-under', d: band.getAttribute('d') });
-
-    if (cross) {
-      /* маска вырезает полосу вдоль верхней нити — вместе с надписью под ней */
-      var mask = el('mask', { id: id + '-cut', maskUnits: 'userSpaceOnUse', x: -120, y: -80, width: 1440, height: 500 });
-      mask.appendChild(el('rect', { x: -120, y: -80, width: 1440, height: 500, fill: '#fff' }));
-      mask.appendChild(el('path', {
-        fill: '#000',
-        d: shape(pts, len, cross.over - OVER - 4, cross.over + OVER + 4, 1.42)
-      }));
-      svg.querySelector('defs').appendChild(mask);
-      art.setAttribute('mask', 'url(#' + id + '-cut)');
-    }
 
     art.appendChild(under);
     art.appendChild(band);
 
     var fallback = box.querySelector('.ribbon-fallback');
     svg.insertBefore(art, text);
-    art.appendChild(text);              /* надпись режется той же маской */
+    art.appendChild(text);
     if (fallback) fallback.remove();
-
-    if (cross) {
-      /* верхняя нить рисуется заново поверх — с мягкой тенью на нижнюю */
-      var d = shape(pts, len, cross.over - OVER, cross.over + OVER);
-      var top = el('g', { 'class': 'ribbon-over' });
-      top.appendChild(el('path', { 'class': 'band-shade', d: d }));
-      top.appendChild(el('path', { 'class': 'band-fill', d: d }));
-      svg.appendChild(top);
-    }
 
     return { text: text, tp: tp, len: len };
   }

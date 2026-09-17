@@ -106,12 +106,19 @@
   </div>
 </section>
 
-<div class="tape-wrap"><div class="tape" aria-hidden="true">
-  <div class="tape-track">
-    <span>живая музыка · ручные куклы · от 1 года · фото с куклами бесплатно · сцена с собой ·&nbsp;</span>
-    <span>живая музыка · ручные куклы · от 1 года · фото с куклами бесплатно · сцена с собой ·&nbsp;</span>
-  </div>
-</div></div>
+<!-- жёлтая лента: объём строит assets/js/ribbon.js -->
+<div class="ribbon ribbon-strip" data-ribbon data-phrase="любимые сказки · ручные куклы · от 1 года · фото с куклами бесплатно · сцена с собой" aria-hidden="true">
+  <svg viewBox="0 0 1200 420" role="presentation">
+    <defs>
+      <path id="ribbonPath3" d="M -100 352 C 96 372, 196 292, 322 252 C 452 210, 546 268, 676 262 C 800 256, 878 186, 1000 156 C 1110 128, 1216 126, 1310 106"></path>
+    </defs>
+    <g class="ribbon-fallback">
+      <use href="#ribbonPath3" class="band-edge"></use>
+      <use href="#ribbonPath3" class="band"></use>
+    </g>
+    <text><textPath href="#ribbonPath3" startOffset="0">любимые сказки · ручные куклы · от 1 года · фото с куклами бесплатно · сцена с собой</textPath></text>
+  </svg>
+</div>
 
 <section id="faq" style="padding-top:0">
   <div class="wrap">
@@ -216,8 +223,8 @@
       '<span class="eyebrow">Ближайший</span>' +
       '<b><a href="spektakl.html?id=' + encodeURIComponent(n.id) + '">' + esc(n.title) + '</a></b>' +
       '<small>' + esc(when) + '</small>' +
-      '<small>' + esc(n.venue) + '</small>' +
-      '<span class="price">' + esc(n.price) + ' ₽ · ' + esc(n.age) + '</span>';
+      '<small>' + esc(n.venue) + ' · ' + esc(n.age) + '</small>' +
+      '<a class="price" href="' + esc(n.ticketUrl || TEATR.TICKET_URL) + '" target="_blank" rel="noopener">Билеты</a>';
     document.getElementById('heroMascot').innerHTML = n.mascot
       ? '<img src="' + esc(n.mascot) + '" alt="Маскот спектакля «' + esc(n.title) + '»">'
       : '<span class="mascot-tag">3D-маскот<br>«' + esc(n.title) + '»</span>';

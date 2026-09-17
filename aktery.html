@@ -32,8 +32,8 @@
       <div class="crumbs" style="color:rgba(36,16,70,.7)">
         <a href="index.html">Главная</a> · <span>Наши актёры</span>
       </div>
-      <h1>Четверо за ширмой</h1>
-      <p>Весь театр — это четыре человека. Они ведут кукол, играют музыку вживую, говорят за всех персонажей, а после поклона выходят в зал фотографироваться.</p>
+      <h1>Двое за ширмой</h1>
+      <p>Обычный спектакль играют двое: ведут кукол, играют музыку вживую и говорят за всех персонажей сразу. На больших постановках за ширму встаёт вся труппа — в «Журавлиных перьях» заняты пятеро.</p>
       <div class="hero-cta">
         <a class="btn btn-violet" href="index.html#afisha">Что мы играем</a>
         <a class="btn btn-line" href="#invite">Позвать к себе</a>
@@ -41,13 +41,13 @@
     </div>
     <div style="display:grid;place-items:center">
       <div class="seal" style="--seal:clamp(150px,20vw,210px)">
-        <svg viewBox="0 0 124 124" role="img" aria-label="Четыре актрисы, шестнадцать спектаклей">
+        <svg viewBox="0 0 124 124" role="img" aria-label="Обычно за ширмой двое">
           <circle cx="62" cy="62" r="60" fill="#241046"></circle>
           <circle cx="62" cy="62" r="50" fill="none" stroke="#FFD23F" stroke-width="1.5" stroke-dasharray="3 5" opacity=".6"></circle>
           <path id="crewSeal" d="M62,62 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0" fill="none"></path>
           <text class="seal-ring" fill="#FFD23F"><textPath href="#crewSeal" startOffset="2%">куклы · музыка · голоса · поклон ·</textPath></text>
-          <text class="seal-mid" x="62" y="66" fill="#FFF4E3">4</text>
-          <text class="seal-sub" x="62" y="80" fill="#FFD23F">актрисы</text>
+          <text class="seal-mid" x="62" y="66" fill="#FFF4E3">2</text>
+          <text class="seal-sub" x="62" y="80" fill="#FFD23F">за ширмой</text>
         </svg>
       </div>
     </div>
@@ -108,12 +108,19 @@
   </div>
 </section>
 
-<div class="tape-wrap"><div class="tape" aria-hidden="true">
-  <div class="tape-track">
-    <span>куклы · музыка вживую · голоса · ширма · свет · поклон · фотографии ·&nbsp;</span>
-    <span>куклы · музыка вживую · голоса · ширма · свет · поклон · фотографии ·&nbsp;</span>
-  </div>
-</div></div>
+<!-- жёлтая лента: объём строит assets/js/ribbon.js -->
+<div class="ribbon ribbon-strip" data-ribbon data-phrase="куклы · музыка вживую · голоса · ширма · свет · поклон · фотографии" aria-hidden="true">
+  <svg viewBox="0 0 1200 420" role="presentation">
+    <defs>
+      <path id="ribbonPath3" d="M -100 352 C 96 372, 196 292, 322 252 C 452 210, 546 268, 676 262 C 800 256, 878 186, 1000 156 C 1110 128, 1216 126, 1310 106"></path>
+    </defs>
+    <g class="ribbon-fallback">
+      <use href="#ribbonPath3" class="band-edge"></use>
+      <use href="#ribbonPath3" class="band"></use>
+    </g>
+    <text><textPath href="#ribbonPath3" startOffset="0">куклы · музыка вживую · голоса · ширма · свет · поклон · фотографии</textPath></text>
+  </svg>
+</div>
 
 <section id="job" style="padding-top:0">
   <div class="wrap">
@@ -232,7 +239,7 @@
       <div class="c-card" style="background:var(--white);color:var(--ink);box-shadow:var(--shadow-card)">
         <h3 style="color:var(--ink-2)">Соцсети</h3>
         <a href="#contacts">Telegram — афиша</a>
-        <a href="#contacts">ВКонтакте</a>
+        <a href="https://vk.com/smallteatrik" target="_blank" rel="noopener">ВКонтакте</a>
       </div>
     </div>
   </div>
@@ -244,5 +251,6 @@
   Маленький театрик кукол · Театр Владимира Злобина · Геленджик · <a href="admin.html">админка</a>
 </footer>
 
+<script src="assets/js/ribbon.js" defer></script>
 </body>
 </html>

@@ -40,7 +40,7 @@
             <circle cx="62" cy="62" r="60" fill="#FFD23F"></circle>
             <circle cx="62" cy="62" r="50" fill="none" stroke="#241046" stroke-width="1.5" stroke-dasharray="3 5" opacity=".5"></circle>
             <path id="sealRing1" d="M62,62 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0" fill="none"></path>
-            <text class="seal-ring" fill="#241046"><textPath href="#sealRing1" startOffset="2%">живая музыка · ручные куклы · сказка ·</textPath></text>
+            <text class="seal-ring" fill="#241046"><textPath href="#sealRing1" startOffset="2%">любимые сказки · ручные куклы · живые голоса ·</textPath></text>
             <text class="seal-mid" x="62" y="66" fill="#241046">1+</text>
             <text class="seal-sub" x="62" y="80" fill="#241046">от года</text>
           </svg>
@@ -138,7 +138,7 @@
       <div class="factband-stats">
         <div class="stat"><b>14</b><span>спектаклей<br>в афише</span></div>
         <div class="stat"><b>1+</b><span>с какого<br>возраста</span></div>
-        <div class="stat"><b>0 ₽</b><span>фото с куклами<br>после спектакля</span></div>
+        <div class="stat"><b>0 ₽</b><span>фото с куклами,<br>куклу можно<br>потрогать</span></div>
       </div>
       <div class="factband-photos">
         <figure><img src="assets/photo/kids-whale.jpg" alt="Зрители фотографируются с большой куклой кита" loading="lazy"></figure>
@@ -150,7 +150,7 @@
 </section>
 
 <!-- жёлтая лента: объём и перехлёст строит assets/js/ribbon.js -->
-<div class="ribbon ribbon-mid" data-ribbon data-phrase="живая музыка · ручные куклы · без микрофона" aria-hidden="true">
+<div class="ribbon ribbon-mid" data-ribbon data-phrase="любимые сказки · ручные куклы · без микрофона" aria-hidden="true">
   <svg viewBox="0 0 1200 420" role="presentation">
     <defs>
       <path id="ribbonPath2" d="M -100 214 C 70 148, 222 116, 392 172 C 520 214, 606 288, 744 278 C 854 270, 920 172, 846 118 C 770 62, 680 146, 748 226 C 824 314, 970 324, 1096 256 C 1182 210, 1242 186, 1310 212"></path>
@@ -159,7 +159,7 @@
       <use href="#ribbonPath2" class="band-edge"></use>
       <use href="#ribbonPath2" class="band"></use>
     </g>
-    <text><textPath href="#ribbonPath2" startOffset="0">живая музыка · ручные куклы · без микрофона</textPath></text>
+    <text><textPath href="#ribbonPath2" startOffset="0">любимые сказки · ручные куклы · без микрофона</textPath></text>
   </svg>
 </div>
 
@@ -177,7 +177,7 @@
             <circle cx="62" cy="62" r="60" fill="#FF6A2B"></circle>
             <circle cx="62" cy="62" r="50" fill="none" stroke="#FFF4E3" stroke-width="1.5" stroke-dasharray="3 5" opacity=".6"></circle>
             <path id="sealRing2" d="M62,62 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0" fill="none"></path>
-            <text class="seal-ring" fill="#FFF4E3"><textPath href="#sealRing2" startOffset="2%">после поклона · куклу можно потрогать ·</textPath></text>
+            <text class="seal-ring" fill="#FFF4E3"><textPath href="#sealRing2" startOffset="2%">куклу можно потрогать · куклу можно потрогать ·</textPath></text>
             <text class="seal-mid" x="62" y="66" fill="#FFF4E3">0 ₽</text>
             <text class="seal-sub" x="62" y="80" fill="#FFF4E3">фото</text>
           </svg>
@@ -208,9 +208,9 @@
       <div class="mos m5 mos-text m-orange">
         <h3>Живая музыка без фонограммы</h3>
         <ul>
-          <li>Инструменты стоят прямо на сцене</li>
-          <li>Играют те же актёры, что ведут кукол</li>
           <li>Играем без микрофона — дети не пугаются</li>
+          <li>Комфортная громкость для детских ушей</li>
+          <li>Вовлекаем деток в представление</li>
         </ul>
       </div>
     </div>
@@ -361,8 +361,8 @@
       </div>
       <div class="c-card">
         <h3>Соцсети</h3>
-        <a href="https://vk.com/smallteatrik" target="_blank" rel="noopener">ВКонтакте — афиша</a>
-        <a href="#contacts">Telegram</a>
+        <a href="#contacts">Telegram — афиша</a>
+        <a href="https://vk.com/smallteatrik" target="_blank" rel="noopener">ВКонтакте</a>
         <p class="plain" style="margin-top:10px">Заказать спектакль в сад или школу — по телефону.</p>
       </div>
     </div>
@@ -408,8 +408,8 @@
       '<span class="eyebrow">Ближайший</span>' +
       '<b><a href="spektakl.html?id=' + encodeURIComponent(n.id) + '">' + esc(n.title) + '</a></b>' +
       '<small>' + esc(when) + '</small>' +
-      '<small>' + esc(n.venue) + '</small>' +
-      '<span class="price">' + esc(n.price) + ' ₽ · ' + esc(n.age) + '</span>';
+      '<small>' + esc(n.venue) + ' · ' + esc(n.age) + '</small>' +
+      '<a class="price" href="' + esc(n.ticketUrl || TEATR.TICKET_URL) + '" target="_blank" rel="noopener">Билеты</a>';
     document.getElementById('heroMascot').innerHTML = n.mascot
       ? '<img src="' + esc(n.mascot) + '" alt="Маскот спектакля «' + esc(n.title) + '»">'
       : '<span class="mascot-tag">3D-маскот<br>«' + esc(n.title) + '»</span>';

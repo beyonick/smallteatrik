@@ -115,12 +115,19 @@
   </div>
 </section>
 
-<div class="tape-wrap"><div class="tape" aria-hidden="true">
-  <div class="tape-track">
-    <span>Колобок · Гуси-лебеди · Цветик-семицветик · Улитка и кит · Федорино горе · Красная шапочка · Айболит · Журавлиные перья ·&nbsp;</span>
-    <span>Колобок · Гуси-лебеди · Цветик-семицветик · Улитка и кит · Федорино горе · Красная шапочка · Айболит · Журавлиные перья ·&nbsp;</span>
-  </div>
-</div></div>
+<!-- жёлтая лента: объём строит assets/js/ribbon.js -->
+<div class="ribbon ribbon-strip" data-ribbon data-phrase="Колобок · Гуси-лебеди · Цветик-семицветик · Улитка и кит · Федорино горе · Красная шапочка · Айболит · Журавлиные перья" aria-hidden="true">
+  <svg viewBox="0 0 1200 420" role="presentation">
+    <defs>
+      <path id="ribbonPath3" d="M -100 352 C 96 372, 196 292, 322 252 C 452 210, 546 268, 676 262 C 800 256, 878 186, 1000 156 C 1110 128, 1216 126, 1310 106"></path>
+    </defs>
+    <g class="ribbon-fallback">
+      <use href="#ribbonPath3" class="band-edge"></use>
+      <use href="#ribbonPath3" class="band"></use>
+    </g>
+    <text><textPath href="#ribbonPath3" startOffset="0">Колобок · Гуси-лебеди · Цветик-семицветик · Улитка и кит · Федорино горе · Красная шапочка · Айболит · Журавлиные перья</textPath></text>
+  </svg>
+</div>
 
 <section id="vyezd" style="padding-top:0">
   <div class="wrap">
