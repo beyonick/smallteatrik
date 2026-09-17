@@ -1,0 +1,184 @@
+/* ───────────────────────────────────────────────
+   Маленький театрик кукол — блоки главной и страницы актёров
+   Печати, выноски, бегущая лента, полоса со счётчиками,
+   шаги, вопросы, расписание, труппа.
+   Подключается после site.css.
+   ─────────────────────────────────────────────── */
+
+/* ── выноска с хвостиком ── */
+.say{
+  position:absolute;background:var(--white);color:var(--ink);border-radius:20px;padding:12px 17px;
+  font-size:13px;font-weight:700;line-height:1.35;box-shadow:0 16px 30px -18px rgba(36,16,70,.9);
+  z-index:6;max-width:220px;
+}
+.say::after{content:"";position:absolute;width:0;height:0;border:11px solid transparent}
+.say-bl::after{border-top-color:var(--white);bottom:-20px;left:26px}
+.say-br::after{border-top-color:var(--white);bottom:-20px;right:26px}
+.say-tl::after{border-bottom-color:var(--white);top:-20px;left:26px}
+.say-yellow{background:var(--yellow)}
+.say-yellow.say-bl::after{border-top-color:var(--yellow)}
+.say-yellow.say-tl::after{border-bottom-color:var(--yellow)}
+.say-mint{background:var(--mint)}
+.say-mint.say-br::after{border-top-color:var(--mint)}
+.say-mint.say-bl::after{border-top-color:var(--mint)}
+
+/* ── круглая печать: текст по окружности ── */
+.seal{width:var(--seal,124px);height:var(--seal,124px);flex:0 0 auto}
+.seal svg{width:100%;height:100%;display:block;transform-origin:50% 50%;animation:sealspin 30s linear infinite}
+.seal .seal-ring{font-family:var(--sans);font-weight:800;font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+.seal .seal-mid{font-family:var(--disp);font-weight:900;font-size:29px;text-anchor:middle}
+.seal .seal-sub{font-family:var(--sans);font-weight:700;font-size:9.5px;letter-spacing:.1em;text-anchor:middle;text-transform:uppercase}
+@keyframes sealspin{to{transform:rotate(360deg)}}
+.seal-float{position:absolute;z-index:7}
+
+/* ── бегущая лента ── */
+.tape-wrap{overflow:hidden}
+.tape{
+  background:var(--ink);color:var(--yellow);padding-block:15px;overflow:hidden;
+  transform:rotate(-1.2deg);width:106%;margin-left:-3%;
+  border-block:3px solid var(--yellow);margin-block:clamp(34px,5vw,64px);
+}
+.tape-track{display:flex;width:max-content;animation:tape 36s linear infinite}
+.tape-track span{
+  display:inline-flex;align-items:center;gap:26px;padding-right:26px;white-space:nowrap;
+  font-family:var(--disp);font-weight:800;font-size:clamp(17px,2vw,25px);
+}
+@keyframes tape{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── расписание ── */
+.sched{display:flex;flex-direction:column;gap:12px}
+.sched-row{
+  display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:22px;align-items:center;
+  background:var(--white);border-radius:26px;padding:16px 20px;box-shadow:var(--shadow-card);
+  transition:transform .2s,box-shadow .2s;
+}
+.sched-row:hover{transform:translateY(-3px);box-shadow:0 30px 52px -30px rgba(36,16,70,.7)}
+.sched-date{background:var(--yellow);border-radius:18px;padding:12px 16px;text-align:center;min-width:92px}
+.sched-date b{display:block;font-family:var(--disp);font-weight:900;font-size:24px;line-height:1}
+.sched-date span{font-size:12px;font-weight:700;color:var(--ink)}
+.sched-row h3{font-size:21px}
+.sched-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.sched-empty{background:var(--white);border-radius:26px;padding:26px;box-shadow:var(--shadow-card);font-size:16px;color:var(--ink-2)}
+
+/* ── полоса фотографий со счётчиками ── */
+.factband{position:relative;margin-top:clamp(60px,7vw,96px)}
+.factband-photos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.factband-photos figure{margin:0;border-radius:var(--r-m);overflow:hidden;box-shadow:0 26px 50px -32px rgba(36,16,70,.8)}
+.factband-photos img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.factband-stats{position:absolute;left:0;right:0;top:-48px;display:flex;justify-content:space-evenly;align-items:flex-start;pointer-events:none}
+.stat{
+  width:clamp(118px,13vw,160px);aspect-ratio:1/1;border-radius:50%;display:grid;place-content:center;
+  text-align:center;padding:14px;color:var(--white);box-shadow:0 22px 40px -20px rgba(36,16,70,.85);
+}
+.stat b{display:block;font-family:var(--disp);font-weight:900;font-size:clamp(25px,3vw,38px);line-height:1}
+.stat span{font-size:11px;font-weight:700;line-height:1.35;margin-top:6px;display:block}
+.stat:nth-child(1){background:var(--violet);transform:rotate(-5deg)}
+.stat:nth-child(2){background:var(--orange);transform:rotate(4deg);margin-top:18px}
+.stat:nth-child(3){background:var(--mint);color:var(--ink);transform:rotate(-3deg)}
+
+/* ── шаги: веер пронумерованных карточек ── */
+.steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px;margin-top:8px;padding-bottom:40px}
+.step{
+  border-radius:var(--r-m);padding:26px 24px;color:var(--white);display:flex;flex-direction:column;gap:12px;
+  box-shadow:0 26px 48px -30px rgba(36,16,70,.8);transition:transform .22s;
+}
+.step .no{font-family:var(--disp);font-weight:800;font-size:13px;letter-spacing:.18em;opacity:.72}
+.step h3{font-size:21px;line-height:1.12}
+.step p{font-size:14px;line-height:1.5;opacity:.92}
+.step:nth-child(1){background:var(--violet);transform:rotate(-3deg)}
+.step:nth-child(2){background:var(--orange);transform:rotate(-1deg);margin-top:16px}
+.step:nth-child(3){background:var(--mint);color:var(--ink);transform:rotate(1.4deg);margin-top:32px}
+.step:nth-child(4){background:var(--ink);transform:rotate(3deg);margin-top:48px}
+.step:hover{transform:rotate(0deg) translateY(-6px)}
+
+/* ── вопросы ── */
+.faq{display:flex;flex-direction:column;gap:12px;max-width:880px}
+.faq details{background:var(--white);border-radius:24px;box-shadow:var(--shadow-card);overflow:hidden}
+.faq summary{
+  list-style:none;cursor:pointer;padding:20px 64px 20px 24px;position:relative;
+  font-family:var(--disp);font-weight:800;font-size:17px;line-height:1.3;
+}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{
+  content:"+";position:absolute;right:20px;top:50%;transform:translateY(-50%);
+  width:32px;height:32px;border-radius:50%;background:var(--cream-2);color:var(--ink);
+  display:grid;place-items:center;font-family:var(--sans);font-weight:700;font-size:20px;transition:background .2s;
+}
+.faq details[open] summary::after{content:"–";background:var(--yellow)}
+.faq summary:hover::after{background:var(--yellow)}
+.faq .answer{padding:0 24px 22px;color:var(--ink-2);font-size:16px;line-height:1.6}
+.faq .answer p+p{margin-top:10px}
+
+/* ── большой логотип в подвале ── */
+.wordmark{padding-inline:20px;margin-top:clamp(40px,6vw,76px);overflow:hidden}
+.wordmark div{
+  font-family:var(--disp);font-weight:900;letter-spacing:-.03em;line-height:.86;
+  font-size:clamp(30px,9.2vw,146px);color:var(--ink);opacity:.13;text-align:center;white-space:nowrap;
+}
+
+/* ═══ страница актёров ═══ */
+.crew-hero{background:var(--mint);color:var(--ink);border-radius:var(--r-l);margin-inline:20px;padding:clamp(34px,5vw,64px);position:relative;overflow:hidden}
+.crew-hero h1{font-size:clamp(40px,6.4vw,92px);margin-block:18px 0;overflow-wrap:break-word}
+.crew-hero .chip{background:rgba(36,16,70,.12);color:var(--ink)}
+.crew-hero p{margin-top:20px;max-width:52ch;font-size:clamp(16px,1.3vw,19px)}
+
+.crew{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}
+.crew-card{
+  background:var(--white);border-radius:var(--r-l);padding:22px;display:grid;
+  grid-template-columns:minmax(0,152px) minmax(0,1fr);gap:22px;align-items:start;
+  box-shadow:var(--shadow-card);transition:transform .22s;
+}
+.crew-card:nth-child(odd){transform:rotate(-1deg)}
+.crew-card:nth-child(even){transform:rotate(1.2deg)}
+.crew-card:hover{transform:rotate(0deg) translateY(-5px)}
+.crew-photo{
+  aspect-ratio:3/4;border-radius:var(--r-m);display:grid;place-items:center;text-align:center;padding:12px;
+  border:2px dashed rgba(36,16,70,.28);font-size:11px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-2);line-height:1.5;overflow:hidden;
+}
+.crew-photo img{width:100%;height:100%;object-fit:cover;border-radius:inherit}
+.crew-card h3{font-size:23px;line-height:1.12}
+.crew-role{display:inline-block;margin-top:10px;border-radius:999px;padding:6px 14px;font-size:13px;font-weight:700;background:var(--cream-2)}
+.crew-role.hi{background:var(--yellow)}
+.crew-card p{margin-top:14px;font-size:15px;color:var(--ink-2);line-height:1.55}
+.crew-chips{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}
+.todo{
+  margin-top:14px;border:2px dashed rgba(36,16,70,.25);border-radius:16px;padding:12px 14px;
+  font-size:13px;font-weight:600;color:var(--ink-2);background:#FFFBF2;line-height:1.5;
+}
+.work{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.work figure{margin:0;border-radius:var(--r-m);overflow:hidden;box-shadow:var(--shadow-card);background:var(--white)}
+.work img{width:100%;aspect-ratio:1/1;object-fit:cover;transition:transform .3s}
+.work figure:hover img{transform:scale(1.05)}
+.work figure:nth-child(odd){transform:rotate(-1.5deg)}
+.work figure:nth-child(even){transform:rotate(1.5deg)}
+.work figcaption{padding:12px 14px;font-size:13px;font-weight:700;color:var(--ink-2)}
+
+/* ── адаптив ── */
+@media(max-width:980px){
+  .steps{grid-template-columns:repeat(2,minmax(0,1fr));padding-bottom:20px}
+  .step{margin-top:0}
+  .factband-stats{position:static;margin-bottom:22px;gap:12px;justify-content:center;flex-wrap:wrap}
+  .stat{margin-top:0}
+  .crew{grid-template-columns:1fr}
+  .work{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .factband-photos{grid-template-columns:1fr 1fr}
+  .factband-photos figure:nth-child(3){grid-column:span 2}
+}
+@media(max-width:620px){
+  .steps{grid-template-columns:1fr}
+  .step,.crew-card,.work figure,.sched-row{transform:none}
+  .sched-row{grid-template-columns:1fr;gap:12px;justify-items:start}
+  .factband-photos{grid-template-columns:1fr}
+  .factband-photos figure:nth-child(3){grid-column:auto}
+  .crew-card{grid-template-columns:1fr}
+  .crew-photo{aspect-ratio:4/3}
+  .crew-hero{margin-inline:12px;border-radius:28px}
+  .say{position:static;max-width:none;margin-bottom:12px}
+  .say::after{display:none}
+  .seal-float{display:none}
+  .wordmark div{white-space:normal}
+}
+@media(prefers-reduced-motion:reduce){
+  .tape-track,.seal svg{animation:none}
+}
