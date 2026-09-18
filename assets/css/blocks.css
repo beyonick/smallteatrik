@@ -123,7 +123,9 @@
 }
 
 /* ═══ страница актёров ═══ */
-.crew-hero{background:var(--mint);color:var(--ink);border-radius:var(--r-l);margin-inline:20px;padding:clamp(34px,5vw,64px);position:relative;overflow:hidden}
+.crew-hero{background:var(--mint);color:var(--ink);border-radius:var(--r-l);
+  width:min(var(--bleed-max),calc(100% - 40px));margin-inline:auto;
+  padding:clamp(34px,5vw,64px);position:relative;overflow:hidden}
 .crew-hero h1{font-size:clamp(40px,6.4vw,92px);margin-block:18px 0;overflow-wrap:break-word}
 .crew-hero .chip{background:rgba(36,16,70,.12);color:var(--ink)}
 .crew-hero p{margin-top:20px;max-width:52ch;font-size:clamp(16px,1.3vw,19px)}
@@ -189,7 +191,7 @@
   .factband-photos figure:nth-child(3){grid-column:auto}
   .crew-card{grid-template-columns:1fr}
   .crew-photo{aspect-ratio:4/3}
-  .crew-hero{margin-inline:12px;border-radius:28px}
+  .crew-hero{margin-inline:12px;border-radius:28px;width:calc(100% - 24px)}
   .say{position:relative;inset:auto;z-index:6;max-width:none;margin-bottom:12px}
   .say::after{display:none}
   .seal-float{display:none}
@@ -201,7 +203,9 @@
 
 /* ═══ шапки отдельных страниц: афиша, расписание, о театре ═══ */
 .page-hero{
-  border-radius:var(--r-l);margin-inline:20px;padding:clamp(34px,5vw,64px);
+  border-radius:var(--r-l);
+  width:min(var(--bleed-max),calc(100% - 40px));margin-inline:auto;
+  padding:clamp(34px,5vw,64px);
   /* снизу запас: на блок заходит жёлтая лента */
   padding-bottom:clamp(96px,11vw,170px);
   position:relative;overflow:hidden;color:var(--ink);
@@ -280,7 +284,7 @@
   .venues,.notes{grid-template-columns:1fr}
   .notes .note:nth-child(3){grid-column:auto}
   .venue{transform:none}
-  .page-hero{margin-inline:12px;border-radius:28px}
+  .page-hero{margin-inline:12px;border-radius:28px;width:calc(100% - 24px)}
   .month{gap:10px}
 }
 

@@ -31,6 +31,8 @@
   --sans:"Onest","Segoe UI",system-ui,sans-serif;
 
   --r-l:40px; --r-m:28px; --r-s:18px;
+  /* докуда растягиваются широкие плашки на больших экранах */
+  --bleed-max:1440px;
   --shadow:0 18px 0 -6px rgba(36,16,70,.10), 0 30px 60px -28px rgba(36,16,70,.45);
   --shadow-card:0 22px 44px -30px rgba(36,16,70,.6);
 }
@@ -90,7 +92,9 @@ section{padding-block:clamp(56px,7vw,110px)}
 
 /* ── герой ── */
 .hero{
-  background:var(--violet);color:var(--white);border-radius:var(--r-l);margin-inline:20px;
+  background:var(--violet);color:var(--white);border-radius:var(--r-l);
+  /* растём вместе с окном, но не шире --bleed-max, дальше — по центру */
+  width:min(var(--bleed-max),calc(100% - 40px));margin-inline:auto;
   padding:clamp(34px,5vw,64px);
   position:relative;overflow:hidden;
 }
@@ -141,7 +145,9 @@ section{padding-block:clamp(56px,7vw,110px)}
   /* один размер на всех, чтобы куклы не прыгали в росте при смене;
      на экранах уже ~1200 кукла считается от ширины окна, иначе
      край куклы срезает кромка шапки */
-  max-width:114%;max-height:min(146%,43vw);
+  /* шапка перестаёт расти на 1440 — вместе с ней упирается и кукла,
+     иначе поворот плашки выносит её край за кромку */
+  max-width:min(114%,656px);max-height:min(146%,43vw);
   opacity:0;transform:scale(.92) translateY(16px) rotate(-2deg);
   transition:opacity .55s ease,transform .75s cubic-bezier(.2,.9,.3,1.2),filter .45s ease;
 }
@@ -149,7 +155,7 @@ section{padding-block:clamp(56px,7vw,110px)}
 /* в одну колонку плашка ниже — иначе кукле срезает макушку */
 @media(max-width:980px){.hero-mascot.mascot-rotator img{max-height:134%}}
 /* кит и журавли шире, чем высокие — им свой предел */
-.mascot-rotator img.is-wide{max-width:112%;max-height:104%}
+.mascot-rotator img.is-wide{max-width:min(112%,644px);max-height:104%}
 /* в одну колонку плашка шире, и киту нужен предел построже */
 @media(max-width:980px){.mascot-rotator img.is-wide{max-width:102%;max-height:104%}}
 .mascot-rotator:hover img.is-on{transform:scale(1.1) rotate(-4deg);filter:drop-shadow(0 34px 34px rgba(36,16,70,.42))}
@@ -288,7 +294,9 @@ section{padding-block:clamp(56px,7vw,110px)}
 .a6{background:linear-gradient(150deg,#CFEBFF,#4FA8F5)}
 
 /* ── о театре ── */
-.about{background:var(--ink);color:var(--white);border-radius:var(--r-l);margin-inline:20px;padding:clamp(34px,5vw,72px)}
+.about{background:var(--ink);color:var(--white);border-radius:var(--r-l);
+  width:min(var(--bleed-max),calc(100% - 40px));margin-inline:auto;
+  padding:clamp(34px,5vw,72px)}
 .about-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(30px,4vw,64px);align-items:center}
 .about h2{font-size:clamp(32px,4.6vw,58px)}
 .about p{margin-top:20px;color:rgba(255,255,255,.82);max-width:52ch}
@@ -379,7 +387,9 @@ section{padding-block:clamp(56px,7vw,110px)}
 .actor .role{display:inline-block;margin-top:8px;background:var(--cream-2);border-radius:999px;padding:4px 11px;font-size:12px;font-weight:700}
 
 /* ── контакты ── */
-.contacts{background:var(--orange);color:var(--white);border-radius:var(--r-l);margin-inline:20px;padding:clamp(34px,5vw,72px)}
+.contacts{background:var(--orange);color:var(--white);border-radius:var(--r-l);
+  width:min(var(--bleed-max),calc(100% - 40px));margin-inline:auto;
+  padding:clamp(34px,5vw,72px)}
 .contacts h2{font-size:clamp(34px,5vw,64px)}
 .c-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:40px}
 .c-card{background:rgba(255,255,255,.16);border-radius:var(--r-m);padding:24px}
@@ -397,7 +407,9 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 .credit{display:block;margin-top:8px;font-size:13px;color:var(--ink-2);opacity:.85}
 
 /* ═══ страница спектакля ═══ */
-.show-hero{border-radius:var(--r-l);margin-inline:20px;padding:clamp(28px,4vw,56px);color:var(--ink);position:relative;overflow:hidden}
+.show-hero{border-radius:var(--r-l);
+  width:min(var(--bleed-max),calc(100% - 40px));margin-inline:auto;
+  padding:clamp(28px,4vw,56px);color:var(--ink);position:relative;overflow:hidden}
 .show-hero.tone-violet{background:var(--violet);color:var(--white)}
 .show-hero.tone-orange{background:var(--orange);color:var(--white)}
 .show-hero.tone-mint{background:var(--mint)}
@@ -468,6 +480,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   .collage figure{margin-top:0}
   .nums{grid-template-columns:1fr 1fr}
   .hero,.about,.contacts,.show-hero{margin-inline:12px;border-radius:28px}
+  .hero,.about,.contacts,.show-hero{width:calc(100% - 24px);margin-inline:auto}
   .wrap{padding-inline:16px}
   .ticket{position:static;width:auto;transform:none;margin-top:16px}
   .brand{white-space:normal;font-size:13px;line-height:1.15}
