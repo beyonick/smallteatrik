@@ -12,27 +12,6 @@
 
   var DEFAULTS = [
     {
-      id: 'veselye-medvezhata',
-      title: 'Весёлые медвежата',
-      tagline: 'новая постановка',
-      age: '1+',
-      duration: 40,
-      price: 800,
-      date: '2026-09-26T10:30',
-      venue: 'ДК им. Л. Плешкова, Малый зал',
-      tone: 'orange',
-      art: 'a3',
-      mascot: '',
-      ticketUrl: 'https://gelendzhik.kassy.ru/events/detskie/2-7678/',
-      published: true,
-      short: 'Новая постановка театра: премьера сентябрьской афиши. Кукольный спектакль для всей семьи.',
-      description: [
-        'Новая постановка «Маленького театрика кукол» — премьера сентябрьской афиши.',
-        'Как и все субботние спектакли, идёт в Малом зале ДК им. Л. Плешкова в 10:30. Билет покупается на взрослого и на ребёнка от года, детям до года — бесплатно, на руках у родителей.'
-      ],
-      photos: ['assets/photo/kids-costumes.jpg', 'assets/photo/audience.jpg', 'assets/photo/kids-giraffe.jpg', 'assets/photo/scene-shirma.jpg']
-    },
-    {
       id: 'cvetik-semicvetik',
       title: 'Цветик-семицветик',
       tagline: 'по В. Катаеву',
@@ -194,7 +173,7 @@
       venue: 'ДК им. Л. Плешкова, Малый зал',
       tone: 'violet',
       art: 'a4',
-      mascot: '',
+      mascot: 'assets/mascot/skazka-o-glupom-myshonke.webp',
       ticketUrl: '',
       published: true,
       short: 'По Маршаку — с авторским продолжением. О том, что непослушание приводит к беде.',
@@ -279,7 +258,7 @@
       venue: 'ДК им. Л. Плешкова, Малый зал',
       tone: 'violet',
       art: 'a4',
-      mascot: '',
+      mascot: 'assets/mascot/zhuravlinye-perya.webp',
       ticketUrl: '',
       published: true,
       short: 'История о выборе и о том, как легко разрушить то, что кажется самым важным. Вечерний спектакль.',
@@ -310,6 +289,27 @@
         'Играем в новогодние праздники: перед началом вместо обычной творческой пятиминутки проходят новогодние танцы и игры с Дедом Морозом, а после спектакля можно поиграть с куклами и сфотографироваться с персонажами — бесплатно.'
       ],
       photos: ['assets/photo/forest.jpg', 'assets/photo/kids-giraffe.jpg', 'assets/photo/kids-whale.jpg', 'assets/photo/audience.jpg']
+    },
+    {
+      id: 'veselye-medvezhata',
+      title: 'Весёлые медвежата',
+      tagline: 'новая постановка',
+      age: '1+',
+      duration: 40,
+      price: 800,
+      date: '2026-09-26T10:30',
+      venue: 'ДК им. Л. Плешкова, Малый зал',
+      tone: 'orange',
+      art: 'a3',
+      mascot: 'assets/mascot/kolobok-lisa.webp',
+      ticketUrl: 'https://gelendzhik.kassy.ru/events/detskie/2-7678/',
+      published: true,
+      short: 'Новая постановка театра: премьера сентябрьской афиши. Кукольный спектакль для всей семьи.',
+      description: [
+        'Новая постановка «Маленького театрика кукол» — премьера сентябрьской афиши.',
+        'Как и все субботние спектакли, идёт в Малом зале ДК им. Л. Плешкова в 10:30. Билет покупается на взрослого и на ребёнка от года, детям до года — бесплатно, на руках у родителей.'
+      ],
+      photos: ['assets/photo/kids-costumes.jpg', 'assets/photo/audience.jpg', 'assets/photo/kids-giraffe.jpg', 'assets/photo/scene-shirma.jpg']
     }
   ];
 

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Маленький театрик кукол">
+  <rect width="64" height="64" rx="15" fill="#6A34D6"/>
+  <path d="M23 20 L26 7 L30 15 L33 5 L37 15 L41 8 L43 20 Z" fill="#FF6A2B"/>
+  <circle cx="32" cy="34" r="19" fill="#FFD23F"/>
+  <circle cx="25.5" cy="30" r="3.2" fill="#241046"/>
+  <circle cx="38.5" cy="30" r="3.2" fill="#241046"/>
+  <path d="M23.3 35.6a11 10 0 0 0 17.4 0" fill="none" stroke="#241046" stroke-width="3.4" stroke-linecap="round"/>
+</svg>

@@ -127,6 +127,16 @@
 .crew-hero h1{font-size:clamp(40px,6.4vw,92px);margin-block:18px 0;overflow-wrap:break-word}
 .crew-hero .chip{background:rgba(36,16,70,.12);color:var(--ink)}
 .crew-hero p{margin-top:20px;max-width:52ch;font-size:clamp(16px,1.3vw,19px)}
+/* фото со спектакля в шапке: печать сидит в углу кадра */
+.hero-photo{position:relative;align-self:center}
+.hero-photo img{
+  width:100%;aspect-ratio:3/2.1;object-fit:cover;object-position:50% 40%;
+  border-radius:var(--r-m);box-shadow:var(--shadow);
+  rotate:-1.6deg;transition:rotate .5s ease,scale .5s ease;
+}
+.hero-photo:hover img{rotate:1deg;scale:1.02}
+/* печать держим у левого угла: справа её срезала бы кромка шапки */
+.hero-photo .seal{position:absolute;left:-26px;bottom:-26px;z-index:3}
 
 .crew{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:26px}
 .crew-card{

@@ -133,6 +133,8 @@ section{padding-block:clamp(56px,7vw,110px)}
 .hero-mascot{position:absolute;inset:0;transform:rotate(-3deg);box-shadow:var(--shadow)}
 /* волк в шапке крупнее плашки и выходит за её края */
 .hero-mascot img{max-width:138%;max-height:156%}
+/* широкие куклы (кит, журавли) не должны вылезать за кромку шапки */
+.hero-mascot-fit img{max-width:106%;max-height:100%}
 
 .ticket{
   position:absolute;right:-6px;bottom:-18px;width:min(260px,74%);background:var(--white);color:var(--ink);
@@ -303,6 +305,31 @@ section{padding-block:clamp(56px,7vw,110px)}
 .b2{right:14px;top:14px;transform:rotate(2deg)}
 
 /* ── актёры ── */
+/* кадр со спектакля над карточками: по наведению подъезжает и открывает подпись */
+.troupe-photo{
+  display:block;position:relative;border-radius:var(--r-m);overflow:hidden;margin-bottom:26px;
+  box-shadow:var(--shadow-card);transform:rotate(-.8deg);transition:transform .3s ease,box-shadow .3s ease;
+}
+.troupe-photo img{
+  display:block;width:100%;aspect-ratio:3/1.35;object-fit:cover;object-position:50% 42%;
+  transition:transform .6s cubic-bezier(.2,.9,.3,1);
+}
+/* затемнение под подписью, чтобы буквы читались поверх сцены */
+.troupe-photo::after{
+  content:'';position:absolute;inset:auto 0 0 0;height:52%;pointer-events:none;
+  background:linear-gradient(to top,rgba(10,4,26,.72),rgba(10,4,26,0));
+  opacity:0;transition:opacity .3s ease;
+}
+.troupe-photo:hover::after,.troupe-photo:focus-visible::after{opacity:1}
+.troupe-photo-cap{
+  position:absolute;z-index:2;left:18px;bottom:18px;right:18px;color:var(--white);
+  font-family:var(--disp);font-weight:800;font-size:clamp(15px,1.9vw,22px);line-height:1.2;
+  text-shadow:0 6px 22px rgba(10,4,26,.85);
+  opacity:0;translate:0 12px;transition:opacity .3s ease,translate .3s ease;
+}
+.troupe-photo:hover,.troupe-photo:focus-visible{transform:rotate(0deg) translateY(-6px);box-shadow:var(--shadow)}
+.troupe-photo:hover img,.troupe-photo:focus-visible img{transform:scale(1.06)}
+.troupe-photo:hover .troupe-photo-cap,.troupe-photo:focus-visible .troupe-photo-cap{opacity:1;translate:0 0}
 .troupe{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
 .actor{background:var(--white);border-radius:var(--r-m);padding:14px;box-shadow:var(--shadow-card);transition:transform .22s}
 .actor:nth-child(odd){transform:rotate(-1.6deg)}
@@ -396,7 +423,11 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   body{font-size:16px}
   .nav-links{display:none}
   .cards,.c-grid,.other{grid-template-columns:1fr}
-  .card,.actor,.mos,.collage figure,.gallery figure{transform:none}
+  .card,.actor,.mos,.collage figure,.gallery figure,.troupe-photo{transform:none}
+  .troupe-photo img{aspect-ratio:3/2}
+  /* ховера нет — подпись и затемнение показываем сразу */
+  .troupe-photo::after{opacity:1}
+  .troupe-photo-cap{opacity:1;translate:0 0;font-size:14px}
   /* цена слева, обе кнопки вместе справа — в одну строку */
   .card-more{display:inline-flex}
   .card-foot{flex-wrap:wrap;gap:8px;row-gap:10px}
