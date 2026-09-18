@@ -48,7 +48,7 @@
       </div>
     </div>
     <div class="hero-art">
-      <div class="mascot hero-mascot" id="heroMascot"><span class="mascot-tag">3D-маскот<br>ближайшего спектакля</span></div>
+      <div class="mascot hero-mascot"><img src="assets/mascot/kolobok.webp" alt="Кукла волка из спектакля «Колобок»"></div>
       <div class="say say-yellow say-bl" style="left:-14px;top:10px">Музыку играем вживую — без фонограммы</div>
       <div class="say say-mint say-br" style="right:-8px;top:104px">Играем без микрофона</div>
       <div class="ticket" id="heroTicket"></div>
@@ -411,9 +411,6 @@
       '<small>' + esc(when) + '</small>' +
       '<small>' + esc(n.venue) + ' · ' + esc(n.age) + '</small>' +
       '<a class="price" href="' + esc(n.ticketUrl || TEATR.TICKET_URL) + '" target="_blank" rel="noopener">Билеты</a>';
-    document.getElementById('heroMascot').innerHTML = n.mascot
-      ? '<img src="' + esc(n.mascot) + '" alt="Маскот спектакля «' + esc(n.title) + '»">'
-      : '<span class="mascot-tag">3D-маскот<br>«' + esc(n.title) + '»</span>';
   }
 })();
 </script>
