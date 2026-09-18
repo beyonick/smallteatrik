@@ -84,11 +84,13 @@ section{padding-block:clamp(56px,7vw,110px)}
   padding:10px 10px 10px 22px;box-shadow:0 10px 30px -14px rgba(36,16,70,.5);
   width:min(1180px,100%);margin-inline:auto;
 }
-.brand{font-family:var(--disp);font-weight:900;font-size:15px;letter-spacing:-.02em;line-height:1.05;white-space:nowrap}
+.brand{font-family:var(--disp);font-weight:900;font-size:19px;letter-spacing:-.02em;line-height:1.05;white-space:nowrap}
 .brand span{display:block;font-family:var(--sans);font-weight:500;font-size:11px;color:var(--ink-2);letter-spacing:.06em;text-transform:uppercase}
 .nav-links{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}
 .nav-links a{padding:9px 14px;border-radius:999px;font-weight:600;font-size:14px;transition:background .18s}
 .nav-links a:hover{background:var(--cream-2)}
+.nav-links a[aria-current="page"]{background:var(--ink);color:var(--white)}
+.nav-links a[aria-current="page"]:hover{background:var(--ink)}
 
 /* ── герой ── */
 .hero{
@@ -231,6 +233,8 @@ section{padding-block:clamp(56px,7vw,110px)}
   background:var(--white);border-radius:var(--r-m);padding:18px;display:flex;flex-direction:column;gap:14px;
   box-shadow:var(--shadow-card);transition:transform .22s ease,box-shadow .22s ease;color:inherit;
 }
+/* .card{display:flex} перебивает браузерное [hidden]{display:none} — фильтры афиши иначе не скрывают карточки */
+.card[hidden]{display:none}
 .card:nth-child(3n+1){transform:rotate(-1.4deg)}
 .card:nth-child(3n){transform:rotate(1.6deg)}
 .card:hover{transform:rotate(0deg) translateY(-6px);box-shadow:0 34px 60px -30px rgba(36,16,70,.7)}
@@ -483,7 +487,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   .hero,.about,.contacts,.show-hero{width:calc(100% - 24px);margin-inline:auto}
   .wrap{padding-inline:16px}
   .ticket{position:static;width:auto;transform:none;margin-top:16px}
-  .brand{white-space:normal;font-size:13px;line-height:1.15}
+  .brand{white-space:normal;font-size:16px;line-height:1.15}
   .nav{padding-inline:12px}
   .nav-in{padding:8px 8px 8px 16px;gap:10px}
   .nav-in .btn-sm{padding:10px 15px;font-size:13px}

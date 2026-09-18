@@ -53,4 +53,12 @@
 
   function sync() { if (wide.matches) close(); }
   if (wide.addEventListener) wide.addEventListener('change', sync);
+
+  /* подсвечиваем пункт меню текущей страницы */
+  var here = location.pathname.split('/').pop() || 'index.html';
+  var links = document.querySelectorAll('.nav-links a, .nav-menu-link');
+  for (var i = 0; i < links.length; i++) {
+    var path = links[i].getAttribute('href').split('#')[0].split('?')[0] || 'index.html';
+    if (path === here) links[i].setAttribute('aria-current', 'page');
+  }
 })();
