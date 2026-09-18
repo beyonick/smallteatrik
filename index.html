@@ -23,8 +23,24 @@
       <a href="#contacts">Контакты</a>
     </div>
     <a class="btn btn-orange btn-sm" href="https://gelendzhik.kassy.ru/events/detskie/" target="_blank" rel="noopener">Купить билет</a>
+    <button class="burger" type="button" id="burger"
+            aria-label="Меню" aria-expanded="false" aria-controls="navMenu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<div class="nav-menu" id="navMenu" hidden>
+  <nav class="nav-menu-links" aria-label="Разделы сайта">
+      <a class="nav-menu-link c1" href="afisha.html">Афиша</a>
+      <a class="nav-menu-link c2" href="raspisanie.html">Расписание</a>
+      <a class="nav-menu-link c3" href="o-teatre.html">О театре</a>
+      <a class="nav-menu-link c4" href="aktery.html">Актёры</a>
+      <a class="nav-menu-link c5" href="#contacts">Контакты</a>
+  </nav>
+  <a class="nav-menu-phone" href="tel:+79123374197">+7 912 337-41-97</a>
+  <img class="nav-menu-bird" src="assets/mascot/aybolit.webp" alt="" aria-hidden="true">
+</div>
 
 <header class="hero">
   <div class="hero-grid">
@@ -49,7 +65,7 @@
     </div>
     <div class="hero-art">
       <div class="mascot hero-mascot"><img src="assets/mascot/kolobok.webp" alt="Кукла волка из спектакля «Колобок»"></div>
-      <div class="say say-yellow say-bl say-b">Музыку играем вживую — без фонограммы</div>
+      <div class="say say-yellow say-bl say-b">Куклы выходят в зал — детей зовём в игру</div>
       <div class="say say-mint say-br say-c">Играем без микрофона</div>
       <div class="ticket" id="heroTicket"></div>
     </div>
@@ -118,7 +134,8 @@
         <span class="chip">О театре</span>
         <h2 style="margin-top:18px">У нас нет своего здания — зато есть свой зритель</h2>
         <p>Мы играем в Малом зале ДК им. Плешкова, на детской площадке «Город сказок», в школах и садах Геленджика. Привозим ширму, свет, кукол и инструменты — и собираем театр там, где нас ждут.</p>
-        <p>Музыку играют те же люди, что ведут кукол: никакой фонограммы и никаких микрофонов. Перед началом — творческая пятиминутка: желающие дети выходят со стихами и песнями. После спектакля куклы остаются на сцене: можно подойти, потрогать и сфотографироваться. Бесплатно.</p>
+        <p>Спектакль идёт не за четвёртой стеной: актёры спускаются с куклами в зал, и дети успевают их потрогать прямо по ходу истории. Перед началом — творческая пятиминутка: желающие выходят со стихами и песнями.</p>
+        <p>Музыку играем вживую, без микрофонов. После поклона куклы остаются на сцене: можно подойти, рассмотреть и сфотографироваться. Бесплатно.</p>
         <div class="hero-cta">
           <a class="btn btn-yellow" href="o-teatre.html">Подробнее о театре</a>
           <a class="btn btn-ghost" href="aktery.html">Познакомиться с актёрами</a>
@@ -129,7 +146,9 @@
         <figure><img src="assets/photo/seagulls.jpg" alt="Актрисы ведут марионеток-чаек" loading="lazy"></figure>
         <figure><img src="assets/photo/russian-tale.jpg" alt="Сцена русской сказки с печкой" loading="lazy"></figure>
         <figure><img src="assets/photo/frogs.jpg" alt="Куклы-лягушки на марионеточных нитях" loading="lazy"></figure>
-      </div>
+              <img class="about-mascot" src="assets/mascot/fedorino-gore.webp"
+             alt="Кукла самовара из спектакля «Федорино горе»">
+</div>
     </div>
   </div>
 
@@ -206,11 +225,11 @@
         <img src="assets/photo/soldiers.jpg" alt="Актрисы в военной форме с куклами из спектакля о войне" loading="lazy">
       </div>
       <div class="mos m5 mos-text m-orange">
-        <h3>Живая музыка без фонограммы</h3>
+        <h3>Играем вместе с залом</h3>
         <ul>
-          <li>Играем без микрофона — дети не пугаются</li>
-          <li>Комфортная громкость для детских ушей</li>
-          <li>Вовлекаем деток в представление</li>
+          <li>Актёры выходят с куклами в зал, а не прячутся за ширмой</li>
+          <li>Вовлекаем детей в представление — куклу можно потрогать по ходу</li>
+          <li>Играем без микрофона, громкость — под детские уши</li>
         </ul>
       </div>
     </div>
@@ -414,5 +433,6 @@
   }
 })();
 </script>
+<script src="assets/js/menu.js" defer></script>
 </body>
 </html>

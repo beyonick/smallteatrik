@@ -23,8 +23,24 @@
       <a href="#contacts">Контакты</a>
     </div>
     <a class="btn btn-orange btn-sm" href="https://gelendzhik.kassy.ru/events/detskie/" target="_blank" rel="noopener">Купить билет</a>
+    <button class="burger" type="button" id="burger"
+            aria-label="Меню" aria-expanded="false" aria-controls="navMenu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<div class="nav-menu" id="navMenu" hidden>
+  <nav class="nav-menu-links" aria-label="Разделы сайта">
+      <a class="nav-menu-link c1" href="afisha.html">Афиша</a>
+      <a class="nav-menu-link c2" href="raspisanie.html">Расписание</a>
+      <a class="nav-menu-link c3" href="o-teatre.html">О театре</a>
+      <a class="nav-menu-link c4" href="aktery.html">Актёры</a>
+      <a class="nav-menu-link c5" href="#contacts">Контакты</a>
+  </nav>
+  <a class="nav-menu-phone" href="tel:+79123374197">+7 912 337-41-97</a>
+  <img class="nav-menu-bird" src="assets/mascot/aybolit.webp" alt="" aria-hidden="true">
+</div>
 
 <header class="crew-hero">
   <div class="hero-grid">
@@ -252,5 +268,6 @@
 </footer>
 
 <script src="assets/js/ribbon.js" defer></script>
+<script src="assets/js/menu.js" defer></script>
 </body>
 </html>

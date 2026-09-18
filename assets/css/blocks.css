@@ -273,3 +273,63 @@
   .page-hero{margin-inline:12px;border-radius:28px}
   .month{gap:10px}
 }
+
+/* ═══ меню на телефоне ═══ */
+.burger{
+  display:none;width:42px;height:42px;flex:0 0 auto;border:0;padding:0;cursor:pointer;
+  background:var(--cream-2);border-radius:50%;position:relative;z-index:2;
+}
+.burger span{
+  position:absolute;left:11px;width:20px;height:2.5px;border-radius:2px;background:var(--ink);
+  transition:transform .22s ease,opacity .18s ease;
+}
+.burger span:nth-child(1){top:14px}
+.burger span:nth-child(2){top:20px}
+.burger span:nth-child(3){top:26px}
+.burger.is-open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.burger.is-open span:nth-child(2){opacity:0}
+.burger.is-open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+.nav-menu{
+  position:fixed;inset:0;z-index:55;background:var(--violet);overflow:hidden;
+  padding:104px 20px 28px;display:flex;flex-direction:column;
+  opacity:0;transform:translateY(-12px);transition:opacity .22s ease,transform .22s ease;
+}
+.nav-menu.is-open{opacity:1;transform:none}
+.nav-menu::after{ /* тёплое пятно, чтобы фон не был плоским */
+  content:"";position:absolute;right:-90px;top:-70px;width:320px;height:320px;border-radius:50%;
+  background:radial-gradient(circle at 35% 35%,var(--violet-l),transparent 70%);
+}
+.nav-menu-links{display:flex;flex-direction:column;gap:10px;position:relative;z-index:2}
+.nav-menu-link{
+  font-family:var(--disp);font-size:clamp(26px,8vw,34px);line-height:1;color:var(--ink);
+  border-radius:20px;padding:14px 20px;transition:transform .18s ease;
+}
+.nav-menu-link:active{transform:scale(.97)}
+.nav-menu-link.c1{background:var(--yellow)}
+.nav-menu-link.c2{background:var(--mint)}
+.nav-menu-link.c3{background:var(--pink)}
+.nav-menu-link.c4{background:var(--sky)}
+.nav-menu-link.c5{background:var(--cream)}
+.nav-menu-phone{
+  margin-top:24px;font-family:var(--disp);font-size:19px;color:var(--white);
+  position:relative;z-index:2;
+}
+.nav-menu-bird{
+  position:absolute;right:-42px;bottom:-30px;width:min(64%,300px);
+  transform:rotate(6deg);filter:drop-shadow(0 22px 26px rgba(20,8,44,.5));
+  pointer-events:none;
+}
+body.menu-open{overflow:hidden}
+
+@media(max-width:620px){
+  .burger{display:block}
+  /* кнопка билета прижата к правому краю, за ней бургер */
+  .nav-in .btn-sm{margin-left:auto}
+}
+@media(min-width:621px){
+  .nav-menu{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  .nav-menu{transition:none}
+}

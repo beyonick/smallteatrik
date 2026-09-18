@@ -243,6 +243,7 @@ section{padding-block:clamp(56px,7vw,110px)}
 .tag{background:var(--cream-2);border-radius:999px;padding:6px 12px;font-size:13px;font-weight:600;color:var(--ink)}
 .card p{font-size:15px;color:var(--ink-2)}
 .card-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:6px}
+.card-more{display:none} /* на широком экране карточка и так кликается целиком */
 .card-foot b{font-family:var(--disp);font-size:18px;font-weight:800}
 
 .a1{background:linear-gradient(150deg,#FFD6E7,#FF7FB6)}
@@ -261,7 +262,15 @@ section{padding-block:clamp(56px,7vw,110px)}
 .num{border-radius:var(--r-s);padding:20px;background:rgba(255,255,255,.08)}
 .num b{display:block;font-family:var(--disp);font-weight:900;font-size:40px;line-height:1;color:var(--yellow)}
 .num span{font-size:14px;color:rgba(255,255,255,.75)}
-.collage{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.collage{display:grid;grid-template-columns:1fr 1fr;gap:16px;position:relative}
+/* самовар выходит из стыка фотографий; правило перебивает .collage img */
+.collage .about-mascot{
+  position:absolute;left:50%;top:50%;width:46%;height:auto;translate:-50% -50%;
+  aspect-ratio:auto;object-fit:contain;
+  z-index:3;rotate:-4deg;filter:drop-shadow(0 26px 30px rgba(10,4,26,.55));
+  transition:rotate .5s ease,scale .5s ease;
+}
+.collage:hover .about-mascot{rotate:2deg;scale:1.06}
 .collage figure{margin:0;border-radius:var(--r-s);overflow:hidden;box-shadow:0 24px 40px -26px #000}
 .collage img{width:100%;aspect-ratio:1/1;object-fit:cover}
 .collage figure:nth-child(1){transform:rotate(-2.5deg)}
@@ -384,6 +393,9 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   .nav-links{display:none}
   .cards,.c-grid,.other{grid-template-columns:1fr}
   .card,.actor,.mos,.collage figure,.gallery figure{transform:none}
+  .card-more{display:inline-flex}
+  .card-foot{flex-wrap:wrap;row-gap:10px}
+  .card-foot b{width:100%}
   .collage figure{margin-top:0}
   .nums{grid-template-columns:1fr 1fr}
   .hero,.about,.contacts,.show-hero{margin-inline:12px;border-radius:28px}

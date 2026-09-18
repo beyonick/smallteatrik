@@ -29,6 +29,8 @@
         '<p>' + esc(s.short) + '</p>' +
         '<div class="card-foot">' +
           '<b>' + esc(s.price) + ' ₽</b>' +
+          /* на телефоне не видно, что карточка кликабельна — даём явную кнопку */
+          '<a class="btn btn-line btn-sm card-more" href="' + href + '">Подробнее</a>' +
           '<a class="btn btn-orange btn-sm" href="' + esc(s.ticketUrl || T.TICKET_URL) + '" target="_blank" rel="noopener">Билет</a>' +
         '</div>' +
       '</article>';

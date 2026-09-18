@@ -23,8 +23,24 @@
       <a href="o-teatre.html#contacts">Контакты</a>
     </div>
     <a class="btn btn-orange btn-sm" id="navTicket" href="https://gelendzhik.kassy.ru/events/detskie/" target="_blank" rel="noopener">Купить билет</a>
+    <button class="burger" type="button" id="burger"
+            aria-label="Меню" aria-expanded="false" aria-controls="navMenu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
+
+<div class="nav-menu" id="navMenu" hidden>
+  <nav class="nav-menu-links" aria-label="Разделы сайта">
+      <a class="nav-menu-link c1" href="afisha.html">Афиша</a>
+      <a class="nav-menu-link c2" href="raspisanie.html">Расписание</a>
+      <a class="nav-menu-link c3" href="o-teatre.html">О театре</a>
+      <a class="nav-menu-link c4" href="aktery.html">Актёры</a>
+      <a class="nav-menu-link c5" href="o-teatre.html#contacts">Контакты</a>
+  </nav>
+  <a class="nav-menu-phone" href="tel:+79123374197">+7 912 337-41-97</a>
+  <img class="nav-menu-bird" src="assets/mascot/aybolit.webp" alt="" aria-hidden="true">
+</div>
 
 <header class="show-hero" id="showHero">
   <div class="show-grid">
@@ -202,10 +218,12 @@
         '<div class="meta"><span class="tag">' + esc(s.age) + '</span><span class="tag">' + esc(s.duration) + ' минут</span></div>' +
         '<p>' + esc(s.short) + '</p>' +
         '<div class="card-foot"><b>' + esc(s.price) + ' ₽</b>' +
-        '<a class="btn btn-orange btn-sm" href="' + esc(s.ticketUrl || TEATR.TICKET_URL) + '" target="_blank" rel="noopener">Билет</a></div>' +
+        '<a class="btn btn-line btn-sm card-more" href="spektakl.html?id=' + encodeURIComponent(s.id) + '">Подробнее</a>' +
+          '<a class="btn btn-orange btn-sm" href="' + esc(s.ticketUrl || TEATR.TICKET_URL) + '" target="_blank" rel="noopener">Билет</a></div>' +
       '</article>';
   }).join('');
 })();
 </script>
+<script src="assets/js/menu.js" defer></script>
 </body>
 </html>
