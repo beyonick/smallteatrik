@@ -316,8 +316,11 @@
   position:relative;z-index:2;
 }
 .nav-menu-bird{
-  position:absolute;right:-42px;bottom:-30px;width:min(64%,300px);
-  transform:rotate(6deg);filter:drop-shadow(0 22px 26px rgba(20,8,44,.5));
+  /* лежит поверх кнопок, но не перехватывает клики: pointer-events:none
+     выключает попугая из hit-теста целиком, поэтому нажатие проходит
+     насквозь и попадает на кнопку под ним на всей её площади */
+  position:absolute;right:-30px;bottom:56px;width:min(70%,300px);
+  z-index:3;transform:rotate(6deg);filter:drop-shadow(0 22px 26px rgba(20,8,44,.5));
   pointer-events:none;
 }
 body.menu-open{overflow:hidden}
