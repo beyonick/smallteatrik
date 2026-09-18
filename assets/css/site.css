@@ -393,9 +393,11 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   .nav-links{display:none}
   .cards,.c-grid,.other{grid-template-columns:1fr}
   .card,.actor,.mos,.collage figure,.gallery figure{transform:none}
+  /* цена слева, обе кнопки вместе справа — в одну строку */
   .card-more{display:inline-flex}
-  .card-foot{flex-wrap:wrap;row-gap:10px}
-  .card-foot b{width:100%}
+  .card-foot{flex-wrap:wrap;gap:8px;row-gap:10px}
+  .card-foot b{margin-right:auto}
+  .card-foot .btn-sm{padding-inline:16px}
   .collage figure{margin-top:0}
   .nums{grid-template-columns:1fr 1fr}
   .hero,.about,.contacts,.show-hero{margin-inline:12px;border-radius:28px}
