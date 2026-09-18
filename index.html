@@ -69,7 +69,9 @@
       </div>
     </div>
     <div class="hero-art">
-      <div class="mascot hero-mascot"><img src="assets/mascot/krasnaya-shapochka-volk.webp" alt="Кукла волка из спектакля «Красная шапочка»"></div>
+      <div class="mascot hero-mascot" data-mascot-rotator data-interval="5500">
+        <noscript><img src="assets/mascot/krasnaya-shapochka-volk.webp" alt="Кукла волка из спектакля «Красная шапочка»"></noscript>
+      </div>
       <div class="say say-yellow say-bl say-b">Куклы выходят в зал — детей зовём в игру</div>
       <div class="say say-mint say-br say-c">Играем без микрофона</div>
       <div class="ticket" id="heroTicket"></div>
@@ -412,6 +414,7 @@
 <script src="assets/js/store.js"></script>
 <script src="assets/js/lift.js" defer></script>
 <script src="assets/js/render.js"></script>
+<script src="assets/js/hero-mascot.js" defer></script>
 <script src="assets/js/ribbon.js" defer></script>
 <script>
 (function(){

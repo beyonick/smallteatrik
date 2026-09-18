@@ -136,6 +136,38 @@ section{padding-block:clamp(56px,7vw,110px)}
 /* широкие куклы (кит, журавли) не должны вылезать за кромку шапки */
 .hero-mascot-fit img{max-width:106%;max-height:100%}
 
+/* ── карусель кукол в шапке: два слоя, между ними перетекаем ── */
+.mascot-rotator img{
+  /* один размер на всех, чтобы куклы не прыгали в росте при смене;
+     на экранах уже ~1200 кукла считается от ширины окна, иначе
+     край куклы срезает кромка шапки */
+  max-width:114%;max-height:min(146%,43vw);
+  opacity:0;transform:scale(.92) translateY(16px) rotate(-2deg);
+  transition:opacity .55s ease,transform .75s cubic-bezier(.2,.9,.3,1.2),filter .45s ease;
+}
+.mascot-rotator img.is-on{opacity:1;transform:none}
+/* в одну колонку плашка ниже — иначе кукле срезает макушку */
+@media(max-width:980px){.hero-mascot.mascot-rotator img{max-height:134%}}
+/* кит и журавли шире, чем высокие — им свой предел */
+.mascot-rotator img.is-wide{max-width:112%;max-height:104%}
+/* в одну колонку плашка шире, и киту нужен предел построже */
+@media(max-width:980px){.mascot-rotator img.is-wide{max-width:102%;max-height:104%}}
+.mascot-rotator:hover img.is-on{transform:scale(1.1) rotate(-4deg);filter:drop-shadow(0 34px 34px rgba(36,16,70,.42))}
+.mascot-name{
+  position:absolute;left:16px;bottom:14px;z-index:4;
+  /* длинные названия («Солдатская сказка…») переносим, а не обрезаем */
+  max-width:min(calc(100% - 32px),250px);
+  background:rgba(255,255,255,.94);color:var(--ink);border-radius:16px;
+  padding:7px 15px;font-size:12px;font-weight:700;line-height:1.3;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
+  box-shadow:0 12px 24px -16px rgba(36,16,70,.9);
+  opacity:0;transition:opacity .45s ease;
+}
+.mascot-name.is-on{opacity:1}
+@media(prefers-reduced-motion:reduce){
+  .mascot-rotator img{transition:opacity .2s linear;transform:none}
+}
+
 .ticket{
   position:absolute;right:-6px;bottom:-18px;width:min(260px,74%);background:var(--white);color:var(--ink);
   border-radius:var(--r-s);padding:18px 20px;transform:rotate(4deg);box-shadow:var(--shadow);z-index:3;
