@@ -131,6 +131,8 @@ section{padding-block:clamp(56px,7vw,110px)}
   background:rgba(255,255,255,.35);line-height:1.4;
 }
 .hero-mascot{position:absolute;inset:0;transform:rotate(-3deg);box-shadow:var(--shadow)}
+/* волк в шапке крупнее плашки и выходит за её края */
+.hero-mascot img{max-width:138%;max-height:156%}
 
 .ticket{
   position:absolute;right:-6px;bottom:-18px;width:min(260px,74%);background:var(--white);color:var(--ink);
@@ -366,6 +368,7 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   .hero-sub{max-width:44ch}
   .hero .hero-cta .seal{margin-top:0}
   .hero-art{min-height:320px;order:-1}
+  .hero-mascot img{max-width:120%;max-height:140%}
   .cards,.other{grid-template-columns:repeat(2,1fr)}
   .troupe{grid-template-columns:repeat(2,1fr)}
   .c-grid{grid-template-columns:1fr 1fr}
@@ -390,7 +393,8 @@ footer a{text-decoration:underline;text-underline-offset:3px}
   .nav{padding-inline:12px}
   .nav-in{padding:8px 8px 8px 16px;gap:10px}
   .nav-in .btn-sm{padding:10px 15px;font-size:13px}
-  .hero-mascot{position:relative;min-height:240px}
+  .hero-mascot{position:relative;min-height:290px}
+  .hero-mascot img{max-width:110%;max-height:146%}
   .mosaic{grid-template-columns:1fr}
   .m1,.m2,.m3,.m4,.m5{grid-column:span 1}
   .bubble{white-space:normal}

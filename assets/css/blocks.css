@@ -21,6 +21,11 @@
 .say-mint{background:var(--mint)}
 .say-mint.say-br::after{border-top-color:var(--mint)}
 .say-mint.say-bl::after{border-top-color:var(--mint)}
+/* места выносок в шапке — только пока они висят поверх плашки */
+.say-a{right:-8px;top:14px}
+.say-b{left:-14px;top:10px}
+.say-c{right:-8px;top:104px}
+.say-d{right:-8px;bottom:-6px}
 
 /* ── круглая печать: текст по окружности ── */
 .seal{width:var(--seal,124px);height:var(--seal,124px);flex:0 0 auto}
@@ -175,7 +180,7 @@
   .crew-card{grid-template-columns:1fr}
   .crew-photo{aspect-ratio:4/3}
   .crew-hero{margin-inline:12px;border-radius:28px}
-  .say{position:static;max-width:none;margin-bottom:12px}
+  .say{position:relative;inset:auto;z-index:6;max-width:none;margin-bottom:12px}
   .say::after{display:none}
   .seal-float{display:none}
   .wordmark div{white-space:normal}
