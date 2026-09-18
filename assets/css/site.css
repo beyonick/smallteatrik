@@ -326,12 +326,16 @@ section{padding-block:clamp(56px,7vw,110px)}
 .c-card{background:rgba(255,255,255,.16);border-radius:var(--r-m);padding:24px}
 .c-card h3{font-family:var(--sans);font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.82);margin-bottom:14px}
 .c-card a{display:block;font-family:var(--disp);font-weight:600;font-size:18px;line-height:1.5}
+/* пометка у номера: чья это трубка */
+.c-card a small{display:block;font-family:var(--sans);font-weight:500;font-size:13px;line-height:1.2;
+  color:rgba(255,255,255,.82);margin-top:-2px}
 .c-card a:hover{color:var(--yellow)}
 .c-card .plain{font-family:var(--sans);font-weight:500;font-size:15px;color:rgba(255,255,255,.9);line-height:1.5}
 .c-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
 
 footer{padding-block:34px;text-align:center;color:var(--ink-2);font-size:14px}
 footer a{text-decoration:underline;text-underline-offset:3px}
+.credit{display:block;margin-top:8px;font-size:13px;color:var(--ink-2);opacity:.85}
 
 /* ═══ страница спектакля ═══ */
 .show-hero{border-radius:var(--r-l);margin-inline:20px;padding:clamp(28px,4vw,56px);color:var(--ink);position:relative;overflow:hidden}
