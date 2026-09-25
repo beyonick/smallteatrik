@@ -31,6 +31,7 @@ jobs:
           RCLONE_CONFIG_SELECTEL_ACCESS_KEY_ID: ${{ secrets.SELECTEL_ACCESS_KEY_ID }}
           RCLONE_CONFIG_SELECTEL_SECRET_ACCESS_KEY: ${{ secrets.SELECTEL_SECRET_ACCESS_KEY }}
         run: |
+          set -o pipefail
           rclone sync . selectel:smallteatrik \
             --exclude ".git/**" \
             --exclude ".github/**" \
@@ -41,4 +42,7 @@ jobs:
             --exclude ".gitignore" \
             --exclude "deploy.ps1" \
             --checksum \
-            --stats-one-line -v
+            --stats-one-line -v 2>&1 | tee rclone.log || {
+              grep -E "ERROR|Failed|error" rclone.log | head -5 | while read -r l; do echo "::error::$l"; done
+              exit 1
+            }
