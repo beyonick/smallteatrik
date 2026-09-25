@@ -8,10 +8,18 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Install rclone
         run: sudo -v ; curl https://rclone.org/install.sh | sudo bash
+
+      - name: Check secrets
+        env:
+          KEY_ID: ${{ secrets.SELECTEL_ACCESS_KEY_ID }}
+          SECRET: ${{ secrets.SELECTEL_SECRET_ACCESS_KEY }}
+        run: |
+          [ -n "$KEY_ID" ] || { echo "::error::Нет секрета SELECTEL_ACCESS_KEY_ID"; exit 1; }
+          [ -n "$SECRET" ] || { echo "::error::Нет секрета SELECTEL_SECRET_ACCESS_KEY"; exit 1; }
 
       - name: Sync to Selectel S3
         env:
@@ -32,4 +40,4 @@ jobs:
             --exclude ".gitignore" \
             --exclude "deploy.ps1" \
             --checksum \
-            --progress
+            --stats-one-line -v
