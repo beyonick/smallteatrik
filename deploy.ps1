@@ -15,6 +15,7 @@ $rcloneArgs = @(
   '--exclude', '.gitignore',
   '--exclude', 'deploy.ps1',
   '--checksum',
+  '--s3-no-check-bucket',
   '--progress'
 )
 if ($DryRun) { $rcloneArgs += '--dry-run' }

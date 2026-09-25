@@ -42,6 +42,7 @@ jobs:
             --exclude ".gitignore" \
             --exclude "deploy.ps1" \
             --checksum \
+            --s3-no-check-bucket \
             --stats-one-line -v 2>&1 | tee rclone.log || {
               grep -E "ERROR|Failed|error" rclone.log | head -5 | while read -r l; do echo "::error::$l"; done
               exit 1
