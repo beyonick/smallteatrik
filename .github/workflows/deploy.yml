@@ -1,0 +1,35 @@
+name: Deploy to Selectel
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install rclone
+        run: sudo -v ; curl https://rclone.org/install.sh | sudo bash
+
+      - name: Sync to Selectel S3
+        env:
+          RCLONE_CONFIG_SELECTEL_TYPE: s3
+          RCLONE_CONFIG_SELECTEL_PROVIDER: Other
+          RCLONE_CONFIG_SELECTEL_ENDPOINT: s3.ru-7.storage.selcloud.ru
+          RCLONE_CONFIG_SELECTEL_REGION: ru-7
+          RCLONE_CONFIG_SELECTEL_ACCESS_KEY_ID: ${{ secrets.SELECTEL_ACCESS_KEY_ID }}
+          RCLONE_CONFIG_SELECTEL_SECRET_ACCESS_KEY: ${{ secrets.SELECTEL_SECRET_ACCESS_KEY }}
+        run: |
+          rclone sync . selectel:smallteatrik \
+            --exclude ".git/**" \
+            --exclude ".github/**" \
+            --exclude ".claude/**" \
+            --exclude "_legacy/**" \
+            --exclude "concepts/**" \
+            --exclude "README.md" \
+            --exclude ".gitignore" \
+            --exclude "deploy.ps1" \
+            --checksum \
+            --progress
