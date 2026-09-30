@@ -330,7 +330,8 @@
 .nav-menu-link.c2{background:var(--mint)}
 .nav-menu-link.c3{background:var(--pink)}
 .nav-menu-link.c4{background:var(--sky)}
-.nav-menu-link.c5{background:var(--cream)}
+.nav-menu-link.c5{background:var(--orange)}
+.nav-menu-link.c6{background:var(--cream)}
 .nav-menu-phone{
   margin-top:24px;font-family:var(--disp);font-size:19px;color:var(--white);
   position:relative;z-index:2;
@@ -345,14 +346,81 @@
 }
 body.menu-open{overflow:hidden}
 
-@media(max-width:620px){
+/* шесть пунктов в строку не помещаются уже на планшете — там тоже бургер */
+@media(max-width:1080px){
+  .nav-links{display:none}
   .burger{display:block}
   /* кнопка билета прижата к правому краю, за ней бургер */
   .nav-in .btn-sm{margin-left:auto}
 }
-@media(min-width:621px){
+@media(min-width:1081px){
   .nav-menu{display:none}
 }
 @media(prefers-reduced-motion:reduce){
   .nav-menu{transition:none}
+}
+
+/* ═══ худрук на странице актёров: карточка на две колонки ═══ */
+.crew-card.is-lead{grid-column:1 / -1;grid-template-columns:minmax(0,240px) minmax(0,1fr);transform:rotate(-.5deg)}
+.crew-card.is-lead:hover{transform:rotate(0deg) translateY(-5px)}
+.crew-card.is-lead h3{font-size:clamp(26px,2.6vw,34px)}
+.crew-card.is-lead p{font-size:16px;max-width:60ch}
+/* после широкой карточки чередуем наклон заново */
+.crew-card.is-lead ~ .crew-card:nth-child(even){transform:rotate(-1deg)}
+.crew-card.is-lead ~ .crew-card:nth-child(odd){transform:rotate(1.2deg)}
+.crew-card.is-lead ~ .crew-card:hover{transform:rotate(0deg) translateY(-5px)}
+
+/* ═══ скоро премьера: текст + плейсхолдеры кадров ═══ */
+.premiere{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);gap:26px;align-items:stretch}
+.premiere-card{
+  background:var(--violet);color:var(--white);border-radius:var(--r-l);padding:clamp(24px,3vw,36px);
+  display:flex;flex-direction:column;gap:14px;transform:rotate(-1deg);box-shadow:var(--shadow-card);
+}
+.premiere-card .chip{align-self:flex-start;background:var(--yellow);color:var(--ink)}
+.premiere-card h3{font-size:clamp(24px,2.4vw,32px);line-height:1.1}
+.premiere-card p{font-size:15px;line-height:1.55;opacity:.92}
+.premiere-card ul{margin:0;padding-left:18px;font-size:15px;line-height:1.6}
+.premiere-shots{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.premiere-shots figure{margin:0;background:var(--white);border-radius:var(--r-m);padding:10px;box-shadow:var(--shadow-card);transition:transform .22s}
+.premiere-shots figure:nth-child(odd){transform:rotate(1.4deg)}
+.premiere-shots figure:nth-child(even){transform:rotate(-1.2deg)}
+.premiere-shots figure:hover{transform:rotate(0deg) translateY(-5px)}
+.shot-ph{
+  aspect-ratio:4/3;border-radius:calc(var(--r-m) - 6px);display:grid;place-items:center;text-align:center;padding:12px;
+  border:2px dashed rgba(36,16,70,.28);font-size:11px;font-weight:700;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-2);line-height:1.5;
+}
+.shot-ph img{width:100%;height:100%;object-fit:cover;border-radius:inherit}
+.premiere-shots figcaption{padding:10px 4px 2px;font-size:13px;font-weight:700;color:var(--ink-2)}
+
+/* ═══ события ═══ */
+.events{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:26px}
+.event{
+  background:var(--white);border-radius:var(--r-l);padding:12px 12px 22px;box-shadow:var(--shadow-card);
+  display:flex;flex-direction:column;transition:transform .22s;
+}
+.event:nth-child(odd){transform:rotate(-1deg)}
+.event:nth-child(even){transform:rotate(1.2deg)}
+.event:hover{transform:rotate(0deg) translateY(-5px)}
+.event-photo{margin:0;border-radius:var(--r-m);overflow:hidden;aspect-ratio:4/3;background:var(--cream-2)}
+.event-photo img{width:100%;height:100%;object-fit:cover}
+.event time{
+  align-self:flex-start;margin:16px 10px 0;border-radius:999px;padding:6px 14px;
+  font-size:13px;font-weight:700;background:var(--yellow);
+}
+.event:nth-child(3n+2) time{background:var(--mint)}
+.event:nth-child(3n) time{background:var(--pink)}
+.event h3{margin:12px 10px 0;font-size:21px;line-height:1.15}
+.event p{margin:10px 10px 0;font-size:15px;color:var(--ink-2);line-height:1.55}
+
+@media(max-width:980px){
+  .premiere{grid-template-columns:1fr}
+  .events{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:620px){
+  .crew-card.is-lead{grid-template-columns:1fr;transform:none}
+  .crew-card.is-lead ~ .crew-card:nth-child(n){transform:none}
+  .premiere-card,.premiere-shots figure,.event{transform:none}
+  .premiere-shots{grid-template-columns:1fr 1fr;gap:12px}
+  .events{grid-template-columns:1fr}
 }

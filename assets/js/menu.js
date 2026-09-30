@@ -12,7 +12,7 @@
   var menu = document.getElementById('navMenu');
   if (!burger || !menu) return;
 
-  var wide = window.matchMedia('(min-width: 621px)');
+  var wide = window.matchMedia('(min-width: 1081px)');
 
   function open() {
     menu.hidden = false;
@@ -58,7 +58,10 @@
   var here = location.pathname.split('/').pop() || 'index.html';
   var links = document.querySelectorAll('.nav-links a, .nav-menu-link');
   for (var i = 0; i < links.length; i++) {
-    var path = links[i].getAttribute('href').split('#')[0].split('?')[0] || 'index.html';
+    var href = links[i].getAttribute('href');
+    /* якорь на этой же странице (#contacts) — не отдельный раздел */
+    if (href.charAt(0) === '#') continue;
+    var path = href.split('#')[0].split('?')[0] || 'index.html';
     if (path === here) links[i].setAttribute('aria-current', 'page');
   }
 })();
