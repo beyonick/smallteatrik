@@ -507,4 +507,5 @@ footer a{text-decoration:underline;text-underline-offset:3px}
 
 /* портреты актёров: вырезаны без фона, подложка — цвет карточки */
 .ph-p.has-photo,.crew-photo.has-photo{padding:0;border:0;align-items:end}
-.ph-p.has-photo img,.crew-photo.has-photo img{object-fit:cover;object-position:50% 0}
+/* фон прозрачный, поэтому вписываем целиком: при любой форме рамки лицо не режется */
+.ph-p.has-photo img,.crew-photo.has-photo img{object-fit:contain;object-position:50% 100%}
